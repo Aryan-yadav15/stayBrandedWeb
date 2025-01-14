@@ -7,6 +7,17 @@ export default {
   ],
   theme: {
     extend: {
+      fontFamily:{
+        Manrope:["Manrope","serif"]
+      },
+      flex: {
+        '2': '2 2 0%', // flex-grow: 2
+        '3': '3 3 0%', // flex-grow: 3
+      },
+      animation: {
+        'spin-slow': 'spin 8s linear infinite',
+        'spin-slower': 'spin 12s linear infinite',
+      },
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
