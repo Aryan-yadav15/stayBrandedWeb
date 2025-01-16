@@ -4,7 +4,7 @@ import WorkflowAnimation from "../_components/ui/ourWorkFlow";
 
 const About = () => {
   return (
-    <div className="h-screen bg-black/90">
+    <div className=" bg-black/90">
       <div className="bg-black/90">
         <InfiniteCarousel />
       </div>
@@ -30,7 +30,9 @@ const About = () => {
             <path d="M5 12h14m-7-7l7 7-7 7" />
           </svg>
         </button>
-        <WorkflowAnimation/>
+        <div className="relative">
+          <WorkflowAnimation />
+        </div>
       </div>
     </div>
   );
