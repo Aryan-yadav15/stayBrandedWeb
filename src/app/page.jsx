@@ -2,6 +2,7 @@ import Image from "next/image";
 import Navbar from "./_components/Global/Navbar";
 import HeroSection from "./_sections/HeroSection";
 import About from "./_sections/About";
+import PricingCards from "./_components/ui/PriceCard";
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
         <div className="relative z-20 bg-white">
           <About />
           {/* Add other sections here */}
+          <PricingCards/>
         </div>
       </main>
     </>

@@ -22,7 +22,8 @@ const workflowSteps = [
   {
     id: 2,
     title: "Develop & Integrate",
-    description: "Next, we develop and integrate AI solutions into your workflows.",
+    description:
+      "Next, we develop and integrate AI solutions into your workflows.",
     content: {
       type: "integration",
       items: [
@@ -52,13 +53,13 @@ const getStatusIcon = (status) => {
     case "operational":
     case "complete":
     case "active":
-      return <CheckCircle className="w-4 h-4 text-emerald-400" />;
+      return <CheckCircle className="w-4 h-4 text-lime-400" />;
     case "in progress":
     case "ongoing":
-      return <Clock className="w-4 h-4 text-blue-400 animate-spin-slow" />;
+      return <Clock className="w-4 h-4 text-lime-400 animate-spin-slow" />;
     case "pending":
     case "scheduled":
-      return <AlertCircle className="w-4 h-4 text-amber-400" />;
+      return <AlertCircle className="w-4 h-4 text-lime-400" />;
     default:
       return <CheckCircle className="w-4 h-4 text-gray-400" />;
   }
@@ -69,13 +70,13 @@ const getStatusColor = (status) => {
     case "operational":
     case "complete":
     case "active":
-      return "bg-emerald-400/10 text-emerald-400 border-emerald-400/20";
+      return "bg-lime-400/10 text-lime-400 border-lime-400/20";
     case "in progress":
     case "ongoing":
-      return "bg-blue-400/10 text-blue-400 border-blue-400/20";
+      return "bg-lime-400/10 text-lime-400 border-lime-400/20";
     case "pending":
     case "scheduled":
-      return "bg-amber-400/10 text-amber-400 border-amber-400/20";
+      return "bg-lime-400/10 text-lime-400 border-lime-400/20";
     default:
       return "bg-gray-400/10 text-gray-400 border-gray-400/20";
   }
@@ -94,8 +95,8 @@ const ContentSection = ({ step, index, onInView }) => {
       viewport={{ once: false, margin: "-40% 0px -40% 0px" }}
       className="min-h-screen flex items-center"
     >
-      <div className="bg-gray-900/50 backdrop-blur-xl border border-gray-800 rounded-2xl p-8 w-full shadow-2xl">
-        <div className="space-y-6">
+      <div className="bg-white/10 backdrop-blur-xl border border-gray-800 rounded-2xl p-6 w-full shadow-2xl">
+        <div className="space-y-4">
           {step.content.items.map((item, idx) => (
             <motion.div
               key={item.id}
@@ -107,26 +108,30 @@ const ContentSection = ({ step, index, onInView }) => {
                 ease: [0.25, 0.1, 0.25, 1],
               }}
               viewport={{ once: false }}
-              className="group bg-gray-800/50 border border-gray-700/50 p-6 rounded-xl flex items-center justify-between hover:bg-gray-800/80 transition-all duration-300"
+              className="group bg-black/50 border border-gray-800 p-4 rounded-xl flex items-center justify-between hover:bg-gray-900/80 transition-all duration-300"
             >
               <div className="flex items-center gap-4">
-                <div className="w-12 h-12 bg-gray-700/50 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                <div className="w-10 h-10 bg-gray-900 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                   {getStatusIcon(item.status)}
                 </div>
                 <div>
-                  <h3 className="text-lg font-medium text-gray-200 group-hover:text-white transition-colors">
+                  <h3 className="text-base font-medium text-gray-200 group-hover:text-white transition-colors">
                     {item.title}
                   </h3>
-                  <p className="text-sm text-gray-400 group-hover:text-gray-300 transition-colors">
+                  <p className="text-xs text-gray-400 group-hover:text-gray-300 transition-colors">
                     Last updated 2 hours ago
                   </p>
                 </div>
               </div>
               <div className="flex items-center gap-4">
-                <span className={`text-sm px-4 py-1.5 rounded-full border ${getStatusColor(item.status)}`}>
+                <span
+                  className={`text-xs px-3 py-1 rounded-full border ${getStatusColor(
+                    item.status
+                  )}`}
+                >
                   {item.status}
                 </span>
-                <ArrowRight className="w-5 h-5 text-gray-500 group-hover:text-gray-300 group-hover:translate-x-1 transition-all" />
+                <ArrowRight className="w-4 h-4 text-gray-500 group-hover:text-lime-400 group-hover:translate-x-1 transition-all" />
               </div>
             </motion.div>
           ))}
@@ -140,63 +145,75 @@ const WorkflowAnimation = () => {
   const [activeStep, setActiveStep] = useState(0);
 
   return (
-    <div className="min-h-screen bg-black/90 flex">
-      {/* Left Side - Sticky Steps */}
-      <div className="w-1/3 p-8 sticky top-0 h-screen flex flex-col justify-center">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="space-y-2"
-        >
-          <h1 className="text-4xl font-bold tracking-tight">
-            Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-500">Workflow</span>
-          </h1>
-          <p className="text-gray-400 text-base">Streamlined process for optimal results</p>
-        </motion.div>
-
-        <div className="space-y-6 mt-8">
-          {workflowSteps.map((step, index) => (
-            <motion.div
-              key={step.id}
-              initial={{ opacity: 0, x: -50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: index * 0.2, duration: 0.8 }}
-              className={`transition-all duration-500 transform ${
-                activeStep === index
-                  ? "opacity-100 translate-x-4"
-                  : "opacity-40 hover:opacity-60"
-              }`}
-            >
-              <div className="flex items-center gap-3">
-                <div className={`w-6 h-6 rounded-lg flex items-center justify-center ${
-                  activeStep === index
-                    ? "bg-yellow-400/20 text-yellow-400"
-                    : "bg-gray-800 text-gray-500"
-                }`}>
-                  {index + 1}
-                </div>
-                <div>
-                  <h2 className="text-lg font-medium text-gray-200 mb-0.5">{step.title}</h2>
-                  <p className="text-xs text-gray-500 leading-relaxed">{step.description}</p>
-                </div>
-              </div>
-            </motion.div>
-          ))}
+    <div className="flex flex-col">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        className="space-y-2"
+      >
+        <div className="flex items-center space-x-2 text-lime-400 mb-2">
+          <span className="text-xs">{"{02}"}</span>
+          <span className="text-xs">— Our process</span>
         </div>
-      </div>
+        <h1 className="text-6xl font-medium text-gray-200 tracking-tight mb-2">
+          Streamlined workflow
+          <br />
+          for optimal results
+        </h1>
+      </motion.div>
+      <div className="min-h-screen bg-black/10 flex">
+        {/* Left Side - Sticky Steps */}
+        <div className="w-2/3 p-12 sticky top-0 h-screen flex flex-col justify-center">
+          <div className="space-y-8 mt-4">
+            {workflowSteps.map((step, index) => (
+              <motion.div
+                key={step.id}
+                initial={{ opacity: 0, x: -50 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: index * 0.2, duration: 0.8 }}
+                className={`transition-all duration-500 transform ${
+                  activeStep === index
+                    ? "opacity-100 translate-x-4"
+                    : "opacity-40 hover:opacity-60"
+                }`}
+              >
+                <div className="flex items-center gap-4">
+                  <div
+                    className={`w-8 h-8 rounded-lg flex items-center justify-center ${
+                      activeStep === index
+                        ? "bg-lime-400/20 text-lime-400"
+                        : "bg-gray-900 text-gray-500"
+                    }`}
+                  >
+                    {index + 1}
+                  </div>
+                  <div>
+                    <h2 className="text-xl font-medium text-gray-200 mb-1">
+                      {step.title}
+                    </h2>
+                    <p className="text-sm text-gray-400 leading-relaxed">
+                      {step.description}
+                    </p>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
 
-      {/* Right Side - Scrolling Content */}
-      <div className="w-2/3 p-12">
-        <div className="space-y-32">
-          {workflowSteps.map((step, index) => (
-            <ContentSection
-              key={step.id}
-              step={step}
-              index={index}
-              onInView={setActiveStep}
-            />
-          ))}
+        {/* Right Side - Scrolling Content */}
+        <div className="w-2/3 p-8">
+          <div className="space-y-32">
+            {workflowSteps.map((step, index) => (
+              <ContentSection
+                key={step.id}
+                step={step}
+                index={index}
+                onInView={setActiveStep}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </div>
