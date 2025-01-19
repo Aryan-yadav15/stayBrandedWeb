@@ -68,7 +68,7 @@ const PricingCards = () => {
   ];
 
   return (
-    <div className="bg-black/90 min-h-screen p-8 sticky top-0 px-24">
+    <div className="bg-black/90 min-h-screen p-8 sticky bottom-0-0 px-24">
       <div className="flex items-center space-x-2 text-lime-400">
         <span className="text-sm">{"{03}"}</span>
         <span className="text-sm">— Plans we provide</span>
