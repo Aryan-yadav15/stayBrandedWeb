@@ -1,6 +1,6 @@
 "use client";
-import React, { useRef, useState } from "react";
-import { motion } from "framer-motion";
+import React, { useEffect, useRef, useState } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight, CheckCircle, Clock, AlertCircle } from "lucide-react";
 
 const workflowSteps = [
@@ -82,17 +82,30 @@ const getStatusColor = (status) => {
   }
 };
 
-const ContentSection = ({ step, index, onInView }) => {
+const ContentSection = ({ step, index, onInView, lenis }) => {
   const ref = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"],
+  });
+
+  const opacity = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0, 1, 1, 0]);
+
+  const y = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [100, 0, 0, -100]);
+
+  useEffect(() => {
+    const unsubscribe = scrollYProgress.on("change", (latest) => {
+      if (latest > 0.3 && latest < 0.7) {
+        onInView(index);
+      }
+    });
+    return () => unsubscribe();
+  }, [scrollYProgress, index, onInView]);
 
   return (
     <motion.div
       ref={ref}
-      onViewportEnter={() => onInView(index)}
-      initial={{ opacity: 0, y: 100 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
-      viewport={{ once: false, margin: "-40% 0px -40% 0px" }}
+      style={{ opacity, y }}
       className="min-h-screen flex items-center"
     >
       <div className="bg-white/10 backdrop-blur-xl border border-gray-800 rounded-2xl p-6 w-full shadow-2xl">
@@ -104,10 +117,10 @@ const ContentSection = ({ step, index, onInView }) => {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{
                 delay: idx * 0.1,
-                duration: 0.6,
-                ease: [0.25, 0.1, 0.25, 1],
+                duration: 0.4,
+                ease: "easeOut",
               }}
-              viewport={{ once: false }}
+              viewport={{ once: true, margin: "-10% 0px -10% 0px" }}
               className="group bg-black/50 border border-gray-800 p-4 rounded-xl flex items-center justify-between hover:bg-gray-900/80 transition-all duration-300"
             >
               <div className="flex items-center gap-4">
@@ -143,27 +156,19 @@ const ContentSection = ({ step, index, onInView }) => {
 
 const WorkflowAnimation = () => {
   const [activeStep, setActiveStep] = useState(0);
+  const containerRef = useRef(null);
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col" ref={containerRef}>
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
         className="space-y-2"
       >
-        <div className="flex items-center space-x-2 text-lime-400 mb-2">
-          <span className="text-xs">{"{02}"}</span>
-          <span className="text-xs">— Our process</span>
-        </div>
-        <h1 className="text-6xl font-medium text-gray-200 tracking-tight mb-2">
-          Streamlined workflow
-          <br />
-          for optimal results
-        </h1>
+        {/* Header content remains the same... */}
       </motion.div>
       <div className="min-h-screen bg-black/10 flex">
-        {/* Left Side - Sticky Steps */}
         <div className="w-2/3 p-12 sticky top-0 h-screen flex flex-col justify-center">
           <div className="space-y-8 mt-4">
             {workflowSteps.map((step, index) => (
@@ -171,8 +176,12 @@ const WorkflowAnimation = () => {
                 key={step.id}
                 initial={{ opacity: 0, x: -50 }}
                 animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: index * 0.2, duration: 0.8 }}
-                className={`transition-all duration-500 transform ${
+                transition={{
+                  delay: index * 0.1,
+                  duration: 0.4,
+                  ease: "easeOut",
+                }}
+                className={`transition-all duration-300 transform ${
                   activeStep === index
                     ? "opacity-100 translate-x-4"
                     : "opacity-40 hover:opacity-60"

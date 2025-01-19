@@ -1,23 +1,28 @@
-import Image from "next/image";
-import Navbar from "./_components/Global/Navbar";
-import HeroSection from "./_sections/HeroSection";
-import About from "./_sections/About";
-import PricingCards from "./_components/ui/PriceCard";
+"use client"
+import React from 'react';
+import Navbar from './_components/Global/Navbar';
+import HeroSection from './_sections/HeroSection';
+import About from './_sections/About';
+import PricingCards from './_components/ui/PriceCard';
+import IndustrySection from './_sections/Industries';
+import useSmoothScroll from './hooks/useSmoothScroll';
 
 export default function Home() {
+  useSmoothScroll();
+
   return (
     <>
       <Navbar />
       <main className="relative">
-        {/* Hero section container */}
         <div className="sticky top-0 z-10">
           <HeroSection />
         </div>
-        {/* Scrolling content container */}
         <div className="relative z-20 bg-white">
           <About />
-          {/* Add other sections here */}
-          <PricingCards/>
+          <div className="relative">
+            <PricingCards />
+          </div>
+          <IndustrySection />
         </div>
       </main>
     </>
