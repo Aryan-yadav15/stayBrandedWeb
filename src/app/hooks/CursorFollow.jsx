@@ -1,26 +1,34 @@
-import React, { useEffect, useState } from 'react';
-import { motion, animate, useMotionValue, useSpring } from 'framer-motion';
+"use client"
+import React, { useEffect } from 'react';
+import { motion, useMotionValue, useSpring } from 'framer-motion';
 
 const CursorDot = () => {
-  const cursorX = useMotionValue(0);
-  const cursorY = useMotionValue(0);
-  
-  // Configure spring physics for smooth movement
+  const cursorX = useMotionValue(-100); // Start offscreen
+  const cursorY = useMotionValue(-100);
+
+  // Spring configuration for the main dot
   const springConfig = { damping: 25, stiffness: 200 };
   const smoothX = useSpring(cursorX, springConfig);
   const smoothY = useSpring(cursorY, springConfig);
 
+  // Spring configuration for the trailing circle
+  const trailingConfig = { damping: 15, stiffness: 150 };
+  const trailingX = useSpring(cursorX, trailingConfig);
+  const trailingY = useSpring(cursorY, trailingConfig);
+
   useEffect(() => {
     const moveCursor = (e) => {
-      // Update the motion values
       cursorX.set(e.clientX);
       cursorY.set(e.clientY);
     };
+
+    // Add cursor styles to body
 
     window.addEventListener('mousemove', moveCursor);
 
     return () => {
       window.removeEventListener('mousemove', moveCursor);
+      document.body.style.cursor = 'auto';
     };
   }, []);
 
@@ -28,43 +36,31 @@ const CursorDot = () => {
     <>
       {/* Main cursor dot */}
       <motion.div
+        className="fixed pointer-events-none z-50"
         style={{
-          position: 'fixed',
           left: smoothX,
           top: smoothY,
-          width: '12px',
-          height: '12px',
-          backgroundColor: 'lime',
-          borderRadius: '50%',
-          pointerEvents: 'none',
-          transform: 'translate(-50%, -50%)',
-          zIndex: 9999,
+          translateX: '-50%',
+          translateY: '-50%'
         }}
-      />
-      {/* Trailing cursor effect */}
+      >
+        <div className="w-3 h-3 bg-lime-400 rounded-full" />
+      </motion.div>
+
+      {/* Trailing circle */}
       <motion.div
+        className="fixed pointer-events-none z-40"
         style={{
-          position: 'fixed',
-          left: smoothX,
-          top: smoothY,
-          width: '40px',
-          height: '40px',
-          border: '1px solid lime',
-          borderRadius: '50%',
-          pointerEvents: 'none',
-          transform: 'translate(-50%, -50%)',
-          zIndex: 9998,
-          opacity: 0.5,
+          left: trailingX,
+          top: trailingY,
+          translateX: '-50%',
+          translateY: '-50%'
         }}
-        transition={{
-          type: 'spring',
-          damping: 30,
-          stiffness: 150,
-          mass: 0.5,
-        }}
-      />
+      >
+        <div className="w-10 h-10 rounded-full border border-lime-400 opacity-50" />
+      </motion.div>
     </>
   );
 };
 
-export default CursorDot;
+export default CursorDot

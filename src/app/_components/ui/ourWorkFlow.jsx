@@ -169,7 +169,22 @@ const WorkflowAnimation = () => {
         {/* Header content remains the same... */}
       </motion.div>
       <div className="min-h-screen bg-black/10 flex">
-        <div className="w-2/3 p-12 sticky top-0 h-screen flex flex-col justify-center">
+        <div className="w-2/3 p-2 sticky top-0 h-screen flex flex-col justify-center">
+          <div className="flex items-center space-x-4">
+            <div className="relative flex items-center mr-2">
+              <div className="absolute h-4 w-4 rounded-full animate-ping bg-red-500"></div>
+              <div className="absolute h-4 w-4 rounded-full bg-red-500"></div>
+            </div>
+            <div className="flex items-center space-x-2 text-lime-400">
+              <span className="text-sm">{"{02} —"}</span>
+              <span className="text-sm font-bold text-white">Workflow</span>
+            </div>
+          </div>
+          <div className="flex mt-4 mb-4">
+            <p className="text-6xl text-left text-white max-w-full font-semibold">
+              This is how our{" "}
+              <span className="text-lime-400 font-cursive"> Workflows </span></p>
+          </div>
           <div className="space-y-8 mt-4">
             {workflowSteps.map((step, index) => (
               <motion.div

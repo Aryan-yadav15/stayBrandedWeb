@@ -1,6 +1,6 @@
-"use client"
-import { useEffect } from 'react';
-import Lenis from '@studio-freight/lenis';
+"use client";
+import { useEffect } from "react";
+import Lenis from "@studio-freight/lenis";
 
 const useSmoothScroll = () => {
   useEffect(() => {
@@ -18,9 +18,13 @@ const useSmoothScroll = () => {
     requestAnimationFrame(raf);
 
     // Debug scroll values
-    lenis.on('scroll', ({ scroll }) => {
+    {
+      /**
+     lenis.on('scroll', ({ scroll }) => {
       console.log('Scroll position:', scroll);
     });
+    */
+    }
 
     return () => {
       lenis.destroy();

@@ -7,6 +7,7 @@ import PricingCards from "./_components/ui/PriceCard";
 import IndustrySection from "./_sections/Industries";
 import useSmoothScroll from "./hooks/useSmoothScroll";
 import CursorDot from "./hooks/CursorFollow";
+import OurTestimonail from "./_sections/OurTestimonail";
 
 export default function Home() {
   useSmoothScroll();
@@ -25,6 +26,7 @@ export default function Home() {
             <PricingCards />
           </div>
           <IndustrySection />
+          <OurTestimonail/>
         </div>
       </main>
     </>

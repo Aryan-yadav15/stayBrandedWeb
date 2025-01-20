@@ -38,9 +38,15 @@ const IndustrySection = () => {
   return (
     <div className="w-full bg-zinc-900 py-16">
       <div className="max-w-6xl mx-auto px-6">
-        <div className="flex items-center space-x-2 text-lime-400">
-          <span className="text-sm">{"{04}"}</span>
-          <span className="text-sm">— Our Work</span>
+        <div className="flex items-center space-x-4">
+          <div className="relative flex items-center mr-2">
+            <div className="absolute h-4 w-4 rounded-full animate-ping bg-red-500"></div>
+            <div className="absolute h-4 w-4 rounded-full bg-red-500"></div>
+          </div>
+          <div className="flex items-center space-x-2 text-lime-400">
+            <span className="text-sm">{"{03} —"}</span>
+            <span className="text-sm font-bold text-white">Our Work</span>
+          </div>
         </div>
         <div className="flex mt-4 mb-4">
           <p className="text-6xl text-left text-white w-[1000px] font-semibold">
@@ -114,11 +120,13 @@ const IndustrySection = () => {
               transition={{ delay: index * 0.1 }}
               className="bg-zinc-800 rounded-lg p-8 border border-lime-400/40 "
             >
-              <img
-                src={card.logo}
-                alt={card.title}
-                className="w-12 h-12 mb-4"
-              />
+              <div className="p-2 bg-white inline-block rounded-lg">
+                <img
+                  src={card.logo}
+                  alt={card.title}
+                  className="w-12 h-12"
+                />
+              </div>
               <h3 className="text-4xl text-lime-400 font-bold mb-3">
                 {card.title}
               </h3>

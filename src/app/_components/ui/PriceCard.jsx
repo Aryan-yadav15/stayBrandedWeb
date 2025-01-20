@@ -68,14 +68,20 @@ const PricingCards = () => {
   ];
 
   return (
-    <div className="bg-black/90 min-h-screen p-8 sticky bottom-0-0 px-24">
-      <div className="flex items-center space-x-2 text-lime-400">
-        <span className="text-sm">{"{03}"}</span>
-        <span className="text-sm">— Plans we provide</span>
+    <div className="bg-black/90 min-h-screen p-8 sticky bottom-0-0 px-36">
+      <div className="flex items-center space-x-4">
+        <div className="relative flex items-center mr-2">
+          <div className="absolute h-4 w-4 rounded-full animate-ping bg-red-500"></div>
+          <div className="absolute h-4 w-4 rounded-full bg-red-500"></div>
+        </div>
+        <div className="flex items-center space-x-2 text-lime-400">
+          <span className="text-sm">{"{04} —"}</span>
+          <span className="text-sm font-bold text-white">Plans we provide</span>
+        </div>
       </div>
       <div className="flex mt-4 mb-4">
         <p className="text-6xl text-left text-white w-[1000px] font-semibold">
-          Three flexible plans designed to fit your needs.
+          Three <span className="text-lime-400">Flexible plans{" "}</span> designed to fit your needs.
         </p>
       </div>
       <div className="flex mb-20">
