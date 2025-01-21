@@ -1,7 +1,8 @@
-"use client"
-import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
-import { Menu, X } from 'lucide-react';
+"use client";
+import React, { useState, useEffect } from "react";
+import { motion } from "framer-motion";
+import { Menu, X } from "lucide-react";
+import Image from "next/image";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -12,18 +13,17 @@ const Navbar = () => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
     };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const navLinks = [
-    { name: 'HOME', href: '#', isActive: true },
-    { name: 'ABOUT', href: '#' },
-    { name: 'SERVICES', href: '#' },
-    { name: 'PROJECTS', href: '#' },
-    { name: 'REVIEWS', href: '#' },
-    { name: 'BLOG', href: '#' },
-    { name: 'CONTACT', href: '#' }
+    { name: "HOME", href: "#", isActive: true },
+    { name: "ABOUT", href: "about" },
+    { name: "SERVICES", href: "#" },
+    { name: "PROJECTS", href: "#" },
+    { name: "REVIEWS", href: "#" },
+    { name: "BLOG", href: "#" },
   ];
 
   return (
@@ -31,23 +31,22 @@ const Navbar = () => {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       className={`fixed w-full z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-black/90 backdrop-blur-sm' : 'bg-black/20'
+        isScrolled ? "bg-black/90 backdrop-blur-sm" : "bg-black/20"
       }`}
     >
       <div className="max-w-7xl mx-auto">
         <div className="flex items-center justify-between px-4 lg:px-8 h-16">
           {/* Logo Section */}
-          <motion.div 
+          <motion.div
             className="flex items-center space-x-2"
             whileHover={{ scale: 1.05 }}
           >
-            <div className="text-green-400 font-bold text-2xl">X</div>
-            <div className="text-white font-bold">AGENCEE</div>
+            <Image src={"/logo.png"} height={200} width={200} alt="logo" className="drop-shadow-xl" />
           </motion.div>
 
           {/* Desktop Navigation Links */}
           <div className="hidden lg:flex">
-            <motion.div 
+            <motion.div
               className="flex space-x-1 bg-black/40 rounded-full py-2 px-3 backdrop-blur-sm"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -58,7 +57,9 @@ const Navbar = () => {
                   key={link.name}
                   href={link.href}
                   className={`px-4 py-1 rounded-full text-sm transition-colors ${
-                    link.isActive ? 'text-green-400' : 'text-white hover:text-green-400'
+                    link.isActive
+                      ? "text-green-400"
+                      : "text-white hover:text-green-400"
                   }`}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
@@ -80,7 +81,11 @@ const Navbar = () => {
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className="p-2 rounded-lg bg-black/20"
             >
-              {isMobileMenuOpen ? <X className="w-6 h-6 text-white" /> : <Menu className="w-6 h-6 text-white" />}
+              {isMobileMenuOpen ? (
+                <X className="w-6 h-6 text-white" />
+              ) : (
+                <Menu className="w-6 h-6 text-white" />
+              )}
             </motion.button>
           </div>
 
@@ -91,7 +96,7 @@ const Navbar = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            TEMPLATE
+            Contact
             <motion.svg
               className="w-4 h-4 ml-2"
               viewBox="0 0 24 24"
@@ -108,11 +113,11 @@ const Navbar = () => {
 
         {/* Mobile Menu */}
         <motion.div
-          className={`lg:hidden ${isMobileMenuOpen ? 'block' : 'hidden'}`}
+          className={`lg:hidden ${isMobileMenuOpen ? "block" : "hidden"}`}
           initial={{ opacity: 0, height: 0 }}
-          animate={{ 
+          animate={{
             opacity: isMobileMenuOpen ? 1 : 0,
-            height: isMobileMenuOpen ? 'auto' : 0
+            height: isMobileMenuOpen ? "auto" : 0,
           }}
           transition={{ duration: 0.3 }}
         >
@@ -122,9 +127,9 @@ const Navbar = () => {
                 key={link.name}
                 href={link.href}
                 className={`block px-4 py-2 rounded-lg ${
-                  link.isActive ? 'text-green-400' : 'text-white'
+                  link.isActive ? "text-green-400" : "text-white"
                 }`}
-                whileHover={{ backgroundColor: 'rgba(255,255,255,0.1)' }}
+                whileHover={{ backgroundColor: "rgba(255,255,255,0.1)" }}
               >
                 {link.name}
               </motion.a>
