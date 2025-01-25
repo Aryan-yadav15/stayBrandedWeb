@@ -31,7 +31,7 @@ const About = () => {
   ]
 
   return (
-    <div className="relative">
+    <div id="about" className="relative">
       <div className="sticky top-0 z-10">
         <AboutHeroSection />
       </div>

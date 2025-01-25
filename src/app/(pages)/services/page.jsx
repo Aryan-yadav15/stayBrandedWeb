@@ -8,7 +8,7 @@ import AppDevSEO from "./_sections/AppdevSeo";
 
 const page = () => {
   return (
-    <div className="relative">
+    <div id="services" className="relative">
       <div className="sticky top-0 z-10">
         <ServiceHeroSection />
       </div>
