@@ -1,10 +1,9 @@
 import { Manrope, Montserrat, Syne } from "next/font/google";
 import "./globals.css";
+import Navbar from "./_components/Global/Navbar";
+import AnimatedFooter from "./_components/Global/Footer";
 
 // Initialize the fonts with custom variables
-
-
-
 
 export const metadata = {
   title: "Create Next App",
@@ -15,7 +14,10 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className="antialiased bg-gray-100 font-Manrope bg-[url('/hi.png')]">
+        <Navbar />
+
         {children}
+        <AnimatedFooter/>
       </body>
     </html>
   );

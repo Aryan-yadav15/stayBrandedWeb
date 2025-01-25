@@ -15,7 +15,6 @@ export default function Home() {
   return (
     <>
       <CursorDot />
-      <Navbar />
       <main className="relative ">
         <div className="sticky top-0 z-10">
           <HeroSection />
