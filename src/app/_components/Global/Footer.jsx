@@ -60,7 +60,7 @@ export default function Footer() {
       <div className="mt-2">
         <h1 className="text-6xl md:text-[12rem] font-black tracking-tighter">
           STAY BRANDED
-          <sup className="text-xl align-top ml-2">TM</sup>
+          <sup className="text-xl align-top ml-2 tracking-wider">TM</sup>
         </h1>
       </div>
     </footer>

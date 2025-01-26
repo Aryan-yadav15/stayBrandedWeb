@@ -38,7 +38,7 @@ const Navbar = () => {
             className="flex items-center space-x-2"
             whileHover={{ scale: 1.05 }}
           >
-            <Image src={"/logo.png"} height={200} width={200} alt="logo" className="drop-shadow-xl" />
+            <Image src={"/logo3.png"} height={140} width={140} alt="logo" className="drop-shadow-xl" />
           </motion.div>
 
           {/* Desktop Navigation Links */}
