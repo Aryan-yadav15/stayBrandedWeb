@@ -1,163 +1,195 @@
-"use client"
-import React from "react"
-import { motion } from "framer-motion"
-import { Target, Brain, Award, Rocket, CheckCircle } from "lucide-react"
-import AboutHeroSection from "./_sections/AboutHeroSection"
+"use client";
+import React from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import {
+  Target,
+  Brain,
+  Award,
+  Rocket,
+  CheckCircle,
+  Sparkles,
+  Gem,
+  Cpu,
+} from "lucide-react";
+import AboutHeroSection from "./_sections/AboutHeroSection";
+import useSmoothScroll from "@/app/hooks/useSmoothScroll";
+import TimelineSection from "./_sections/scrollSection";
 
 const About = () => {
+  useSmoothScroll();
+  const { scrollYProgress } = useScroll();
+  const rotate = useTransform(scrollYProgress, [0, 1], [0, 20]);
+  const scale = useTransform(scrollYProgress, [0, 1], [1, 1.05]);
+
   const CoreValues = [
     {
-      icon: <Target className="w-12 h-12 text-lime-400" />,
-      title: "Innovation",
-      description: "Continuously pushing technological boundaries",
+      icon: <Cpu className="w-12 h-12 text-lime-400" />, // Replaced Circuitry with Cpu
+      title: "Innovation Engine",
+      description: "Pioneering solutions through iterative R&D",
+      pattern:
+        "bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-lime-400/10 to-transparent",
     },
     {
-      icon: <Brain className="w-12 h-12 text-teal-400" />,
-      title: "Collaboration",
-      description: "Bringing diverse perspectives together",
+      icon: <Sparkles className="w-12 h-12 text-teal-400" />,
+      title: "Quality Alchemy",
+      description: "Transforming ideas into exceptional products",
+      pattern:
+        "bg-[conic-gradient(at_top_left,_var(--tw-gradient-stops))] from-teal-400/10 via-transparent to-transparent",
     },
     {
-      icon: <Award className="w-12 h-12 text-blue-400" />,
-      title: "Excellence",
-      description: "Delivering exceptional results consistently",
+      icon: <Gem className="w-12 h-12 text-blue-400" />,
+      title: "Client-Centric Core",
+      description: "Your success metrics drive our operations",
+      pattern:
+        "bg-[linear-gradient(45deg,_var(--tw-gradient-stops))] from-blue-400/10 to-transparent",
     },
-  ]
-
-  const achievements = [
-    { number: "500+", text: "Projects Completed" },
-    { number: "50+", text: "Awards Won" },
-    { number: "100%", text: "Client Satisfaction" },
-    { number: "24/7", text: "Support" },
-  ]
+  ];
 
   return (
-    <div id="about" className="relative">
-      <div className="sticky top-0 z-10">
-        <AboutHeroSection />
-      </div>
-      <div className="relative z-20 bg-black">
-        <div className="bg-gradient-to-br from-black via-gray-900 to-black text-gray-100">
-          {/* Hero Section */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1 }}
-            className="container mx-auto px-6 py-24 flex flex-col md:flex-row items-center justify-between"
-          >
-            <div className="md:w-1/2 mb-8 md:mb-0">
-              <h1 className="text-5xl md:text-6xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-lime-400 to-teal-300">
-                Crafting Digital Experiences
-              </h1>
-              <p className="text-xl text-gray-300 max-w-xl">
-                We are a passionate team of designers, developers, and strategists dedicated to transforming innovative
-                ideas into remarkable digital solutions.
-              </p>
-            </div>
-            <motion.div
-              initial={{ scale: 0.8, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ delay: 0.5, duration: 0.8 }}
-              className="md:w-1/2"
-            >
-              <div className="relative w-full h-80 md:h-96">
-                <div className="absolute inset-0 bg-gradient-to-r from-lime-400/20 to-teal-300/20 rounded-lg transform rotate-3"></div>
-                <img
-                  src="/placeholder.svg?height=400&width=600"
-                  alt="Digital Experience"
-                  className="absolute inset-0 w-full h-full object-cover rounded-lg shadow-2xl transform -rotate-3"
+    <div id="about" className="relative overflow-hidden ">
+      <AboutHeroSection />
+
+      {/* Animated Background Element */}
+      <div className="bg-black z-40">
+        <motion.div
+          style={{ rotate, scale }}
+          className="absolute -top-1/3 -right-1/4 w-[800px] h-[800px] bg-gradient-to-r from-lime-400/5 to-teal-300/5 rounded-full blur-3xl"
+        />
+
+        <div className="relative z-20 space-y-28 py-28 container mx-auto px-6">
+          {/* Dynamic Value Cards */}
+          <section className="grid md:grid-cols-3 gap-8">
+            {CoreValues.map((value, index) => (
+              <motion.div
+                key={value.title}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                className="relative overflow-hidden rounded-2xl border border-lime-400/20 bg-zinc-900/50 backdrop-blur-lg"
+              >
+                <div
+                  className={`absolute -inset-8 opacity-30 ${value.pattern}`}
                 />
+                <div className="relative p-8 space-y-6">
+                  <motion.div
+                    whileHover={{ rotate: 15, scale: 1.1 }}
+                    className="w-fit mx-auto"
+                  >
+                    {value.icon}
+                  </motion.div>
+                  <h3 className="text-2xl font-bold text-center bg-gradient-to-r from-lime-400 to-teal-300 bg-clip-text text-transparent">
+                    {value.title}
+                  </h3>
+                  <p className="text-gray-300 text-center">
+                    {value.description}
+                  </p>
+                </div>
+              </motion.div>
+            ))}
+          </section>
+
+          {/* Animated Timeline */}
+          <TimelineSection/>
+
+          {/* Interactive Stats Grid */}
+          <motion.div
+            className="grid grid-cols-2 md:grid-cols-4 gap-4"
+            initial="hidden"
+            whileInView="visible"
+            variants={{
+              hidden: { opacity: 0 },
+              visible: {
+                opacity: 1,
+                transition: { staggerChildren: 0.2 },
+              },
+            }}
+          >
+            {[
+              { value: "300%", label: "ROI Boost" },
+              { value: "10x", label: "Efficiency Gain" },
+              { value: "99.9%", label: "Uptime" },
+              { value: "150+", label: "Happy Clients" },
+            ].map((stat, index) => (
+              <motion.div
+                key={stat.label}
+                variants={{
+                  hidden: { scale: 0.8, opacity: 0 },
+                  visible: { scale: 1, opacity: 1 },
+                }}
+                className="p-6 rounded-xl border border-lime-400/20 bg-zinc-900/50 text-center"
+              >
+                <div className="text-4xl font-bold bg-gradient-to-r from-lime-400 to-teal-300 bg-clip-text text-transparent mb-2">
+                  {stat.value}
+                </div>
+                <div className="text-gray-300 uppercase text-sm tracking-wider">
+                  {stat.label}
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+
+          {/* Floating Service Cards */}
+          <section className="grid md:grid-cols-2 gap-8">
+            <motion.div
+              className="relative overflow-hidden rounded-2xl border border-lime-400/20 bg-zinc-900/50 p-8"
+              whileHover={{ y: -10 }}
+              transition={{ type: "spring", stiffness: 300 }}
+            >
+              <div className="absolute -top-20 -right-20 w-40 h-40 bg-teal-400/10 rounded-full blur-xl" />
+              <Rocket className="w-12 h-12 text-lime-400 mb-6" />
+              <h3 className="text-2xl font-bold text-lime-400 mb-4">
+                Tech Acceleration
+              </h3>
+              <p className="text-gray-300 mb-6">
+                Next-gen solutions leveraging cutting-edge frameworks and cloud
+                infrastructure
+              </p>
+              <div className="flex flex-wrap gap-2">
+                {["AI Integration", "IoT Solutions", "Blockchain"].map(
+                  (tech) => (
+                    <span
+                      key={tech}
+                      className="px-3 py-1 rounded-full bg-lime-400/10 text-lime-400 text-sm"
+                    >
+                      {tech}
+                    </span>
+                  )
+                )}
               </div>
             </motion.div>
-          </motion.div>
 
-          {/* Core Values Section */}
-          <div className="container mx-auto px-6 py-24">
-            <h2 className="text-4xl font-bold text-center mb-16 text-transparent bg-clip-text bg-gradient-to-r from-lime-400 to-teal-300">
-              Our Core Values
-            </h2>
-            <div className="grid md:grid-cols-3 gap-12">
-              {CoreValues.map((value, index) => (
-                <motion.div
-                  key={value.title}
-                  initial={{ opacity: 0, y: 50 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.2 }}
-                  className="bg-zinc-800/50 p-8 rounded-xl text-center hover:shadow-xl hover:shadow-lime-400/10 transition-all duration-300 transform hover:-translate-y-2"
-                >
-                  <div className="flex justify-center mb-6">{value.icon}</div>
-                  <h3 className="text-2xl font-semibold mb-4 text-lime-400">{value.title}</h3>
-                  <p className="text-gray-300">{value.description}</p>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-
-          {/* Achievements Section */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1, delay: 0.5 }}
-            className="container mx-auto px-6 py-24 bg-gradient-to-r from-zinc-900 to-zinc-800 rounded-3xl shadow-2xl"
-          >
-            <h2 className="text-4xl font-bold text-center mb-16 text-transparent bg-clip-text bg-gradient-to-r from-lime-400 to-teal-300">
-              Our Achievements
-            </h2>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-              {achievements.map((achievement, index) => (
-                <motion.div
-                  key={achievement.text}
-                  initial={{ scale: 0.8, opacity: 0 }}
-                  animate={{ scale: 1, opacity: 1 }}
-                  transition={{ delay: index * 0.2 }}
-                  className="text-center"
-                >
-                  <div className="text-4xl md:text-5xl font-bold text-lime-400 mb-2">{achievement.number}</div>
-                  <div className="text-gray-300">{achievement.text}</div>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-
-          {/* Services Section */}
-          <div className="container mx-auto px-6 py-24">
-            <h2 className="text-4xl font-bold text-center mb-16 text-transparent bg-clip-text bg-gradient-to-r from-lime-400 to-teal-300">
-              Our Services
-            </h2>
-            <div className="grid md:grid-cols-2 gap-12">
-              <motion.div
-                initial={{ opacity: 0, x: -50 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8 }}
-                className="bg-zinc-800/30 p-8 rounded-xl"
-              >
-                <Rocket className="w-12 h-12 text-lime-400 mb-6" />
-                <h3 className="text-2xl font-semibold mb-4 text-lime-400">Web Development</h3>
-                <p className="text-gray-300">
-                  We create stunning, responsive websites that engage your audience and drive results. Our expert team
-                  uses cutting-edge technologies to build scalable and performant web applications.
-                </p>
-              </motion.div>
-              <motion.div
-                initial={{ opacity: 0, x: 50 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8, delay: 0.2 }}
-                className="bg-zinc-800/30 p-8 rounded-xl"
-              >
-                <CheckCircle className="w-12 h-12 text-teal-400 mb-6" />
-                <h3 className="text-2xl font-semibold mb-4 text-teal-400">Digital Strategy</h3>
-                <p className="text-gray-300">
-                  Our strategic approach helps businesses navigate the digital landscape, identifying opportunities for
-                  growth and innovation. We develop comprehensive plans to achieve your digital goals and stay ahead of
-                  the competition.
-                </p>
-              </motion.div>
-            </div>
-          </div>
+            <motion.div
+              className="relative overflow-hidden rounded-2xl border border-teal-400/20 bg-zinc-900/50 p-8"
+              whileHover={{ y: -10 }}
+              transition={{ type: "spring", stiffness: 300, delay: 0.1 }}
+            >
+              <div className="absolute -bottom-20 -left-20 w-40 h-40 bg-lime-400/10 rounded-full blur-xl" />
+              <CheckCircle className="w-12 h-12 text-teal-400 mb-6" />
+              <h3 className="text-2xl font-bold text-teal-400 mb-4">
+                Strategic Excellence
+              </h3>
+              <p className="text-gray-300 mb-6">
+                Data-driven decision making powered by real-time analytics and
+                market insights
+              </p>
+              <div className="flex flex-wrap gap-2">
+                {["BI Tools", "Market Analysis", "Risk Management"].map(
+                  (tech) => (
+                    <span
+                      key={tech}
+                      className="px-3 py-1 rounded-full bg-teal-400/10 text-teal-400 text-sm"
+                    >
+                      {tech}
+                    </span>
+                  )
+                )}
+              </div>
+            </motion.div>
+          </section>
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default About
-
+export default About;

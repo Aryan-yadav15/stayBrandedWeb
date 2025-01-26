@@ -16,7 +16,7 @@ export default function Footer() {
   return (
     <footer className="min-h-screen bg-[#F7F4EB] flex flex-col items-center justify-center px-4 py-20 relative">
       {/* Social Media Links */}
-      <div className="fixed left-8 top-1/2 -translate-y-1/2 flex flex-col gap-6">
+      <div className="fixed left-8 top-1/2 -translate-y-1/2 flex flex-col gap-6 -z-20">
         {socialLinks.map((link) => (
           <Link
             key={link.name}
@@ -57,9 +57,9 @@ export default function Footer() {
       </div>
 
       {/* Logo */}
-      <div className="mt-20">
-        <h1 className="text-6xl md:text-8xl font-black tracking-tighter">
-          TONEMAKI
+      <div className="mt-2">
+        <h1 className="text-6xl md:text-[12rem] font-black tracking-tighter">
+          STAY BRANDED
           <sup className="text-xl align-super ml-2">TM</sup>
         </h1>
       </div>

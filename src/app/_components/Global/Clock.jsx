@@ -1,14 +1,27 @@
+"use client"
 import { useState, useEffect } from "react"
 
 function Clock() {
-  const [time, setTime] = useState(new Date())
+  const [mounted, setMounted] = useState(false)
+  const [time, setTime] = useState(null)
 
   useEffect(() => {
+    setMounted(true)
+    setTime(new Date())
     const intervalId = setInterval(() => {
       setTime(new Date())
-    }, 1000)  
+    }, 1000)
     return () => clearInterval(intervalId)
   }, [])
+
+  if (!mounted || !time) return null
+
+  // Split the text into two color groups
+  const getLetterColor = (index) => {
+    if (index >= 1 && index <= 4) return "text-lime-400" // "STAY"
+    if (index >= 5 && index <= 11) return "text-teal-400" // "BRANDED"
+    return "text-yellow-400" // The dash
+  }
 
   return (
     <div className="relative w-64 h-64 mx-auto my-12">
@@ -19,7 +32,7 @@ function Clock() {
           return (
             <div
               key={i}
-              className="absolute text-yellow-400 font-bold text-lg"
+              className={`absolute font-bold text-lg ${getLetterColor(i)}`}
               style={{
                 left: `${50 + Math.cos(angle) * 42}%`,
                 top: `${50 + Math.sin(angle) * 42}%`,
@@ -32,7 +45,7 @@ function Clock() {
         })}
         {/* Clock Hands */}
         <div
-          className="absolute w-1 h-20 bg-white origin-bottom rounded-full"
+          className="absolute w-1 h-20 bg-yellow-400 origin-bottom rounded-full"
           style={{
             left: "50%",
             bottom: "50%",
@@ -40,7 +53,7 @@ function Clock() {
           }}
         />
         <div
-          className="absolute w-1 h-28 bg-yellow-400 origin-bottom rounded-full"
+          className="absolute w-1 h-28 bg-red-400 origin-bottom rounded-full"
           style={{
             left: "50%",
             bottom: "50%",
@@ -49,7 +62,7 @@ function Clock() {
         />
         {/* Center Dot */}
         <div
-          className="absolute w-4 h-4 bg-yellow-400 rounded-full"
+          className="absolute w-4 h-4 bg-orange-400 rounded-full"
           style={{ left: "50%", top: "50%", transform: "translate(-50%, -50%)" }}
         />
       </div>
@@ -58,4 +71,3 @@ function Clock() {
 }
 
 export default Clock
-

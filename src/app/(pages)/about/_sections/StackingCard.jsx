@@ -1,22 +1,34 @@
-import { motion, useScroll } from "framer-motion";
+"use client"
+import React from "react"
+import { motion } from "framer-motion"
 
-const ScrollStackingCard = ({ title, description, price }) => {
-  const { scrollYProgress } = useScroll();
-
+export const CardStack = ({ items }) => {
   return (
-    <motion.div
-      className="bg-gray-800 p-4 rounded-lg shadow-md"
-      style={{
-        transform: `translateY(${scrollYProgress * 50}px)`,
-      }}
-    >
-      <div className="flex justify-between items-center mb-2">
-        <h3 className="text-lg font-bold">{title}</h3>
-        <p className="text-green-500 font-bold">${price}</p>
-      </div>
-      <p className="text-gray-400">{description}</p>
-    </motion.div>
-  );
-};
-
-export default ScrollStackingCard
+    <div className="relative h-[400px] w-full">
+      {items.map((item, index) => (
+        <motion.div
+          key={item.id}
+          className="absolute bg-zinc-800/50 p-6 rounded-xl shadow-lg border border-lime-400/20"
+          style={{
+            width: "100%",
+            top: `${index * 20}px`,
+            left: `${index * 20}px`,
+            zIndex: items.length - index,
+          }}
+          initial={{ scale: 0.8, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ delay: index * 0.1, duration: 0.5 }}
+          whileHover={{ scale: 1.05 }}
+        >
+          <div className="flex items-center gap-4">
+            {item.icon}
+            <div>
+              <h3 className="text-xl font-semibold text-lime-400">{item.name}</h3>
+              <p className="text-gray-300">{item.content}</p>
+            </div>
+          </div>
+        </motion.div>
+      ))}
+    </div>
+  )
+}
