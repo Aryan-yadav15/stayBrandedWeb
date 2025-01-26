@@ -23,7 +23,7 @@ const About = () => {
 
   const CoreValues = [
     {
-      icon: <Cpu className="w-12 h-12 text-lime-400" />, // Replaced Circuitry with Cpu
+      icon: <Cpu className="w-12 h-12 text-lime-400" />,
       title: "Innovation Engine",
       description: "Pioneering solutions through iterative R&D",
       pattern:
@@ -46,146 +46,217 @@ const About = () => {
   ];
 
   return (
-    <div id="about" className="relative overflow-hidden ">
-      <AboutHeroSection />
-
-      {/* Animated Background Element */}
-      <div className="bg-black z-40">
-        <motion.div
-          style={{ rotate, scale }}
-          className="absolute -top-1/3 -right-1/4 w-[800px] h-[800px] bg-gradient-to-r from-lime-400/5 to-teal-300/5 rounded-full blur-3xl"
-        />
-
-        <div className="relative z-20 space-y-28 py-28 container mx-auto px-6">
-          {/* Dynamic Value Cards */}
-          <section className="grid md:grid-cols-3 gap-8">
-            {CoreValues.map((value, index) => (
-              <motion.div
-                key={value.title}
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                className="relative overflow-hidden rounded-2xl border border-lime-400/20 bg-zinc-900/50 backdrop-blur-lg"
-              >
-                <div
-                  className={`absolute -inset-8 opacity-30 ${value.pattern}`}
-                />
-                <div className="relative p-8 space-y-6">
-                  <motion.div
-                    whileHover={{ rotate: 15, scale: 1.1 }}
-                    className="w-fit mx-auto"
-                  >
-                    {value.icon}
-                  </motion.div>
-                  <h3 className="text-2xl font-bold text-center bg-gradient-to-r from-lime-400 to-teal-300 bg-clip-text text-transparent">
-                    {value.title}
-                  </h3>
-                  <p className="text-gray-300 text-center">
-                    {value.description}
-                  </p>
-                </div>
-              </motion.div>
-            ))}
-          </section>
-
-          {/* Animated Timeline */}
-          <TimelineSection/>
-
-          {/* Interactive Stats Grid */}
+    <div id="about" className="relative overflow-hidden">
+      <div className="sticky top-0 z-10">
+        <AboutHeroSection />
+      </div>
+      <div className="relative z-20 bg-black ">
+        {/* Animated Background Element */}
+        <div className="bg-black z-40">
           <motion.div
-            className="grid grid-cols-2 md:grid-cols-4 gap-4"
-            initial="hidden"
-            whileInView="visible"
-            variants={{
-              hidden: { opacity: 0 },
-              visible: {
-                opacity: 1,
-                transition: { staggerChildren: 0.2 },
-              },
-            }}
-          >
-            {[
-              { value: "300%", label: "ROI Boost" },
-              { value: "10x", label: "Efficiency Gain" },
-              { value: "99.9%", label: "Uptime" },
-              { value: "150+", label: "Happy Clients" },
-            ].map((stat, index) => (
+            style={{ rotate, scale }}
+            className="absolute -top-1/3 -right-1/4 w-[800px] h-[800px] bg-gradient-to-r from-lime-400/5 to-teal-300/5 rounded-full blur-3xl"
+          />
+
+          <div className="relative z-20 space-y-28 py-28 container mx-auto px-4 sm:px-6 lg:px-8">
+            {/* Core Values Section */}
+            <section className="space-y-12">
+              <div className="text-center space-y-4">
+                <div className="flex items-center justify-center space-x-4">
+                  <div className="relative">
+                    <div className="absolute h-5 w-5 animate-ping bg-lime-400 rounded-full" />
+                    <div className="h-5 w-5 bg-lime-600 rounded-full" />
+                  </div>
+                  <h2 className="text-4xl md:text-5xl font-bold text-white">
+                    Our Core Values
+                  </h2>
+                </div>
+                <p className="text-lg text-gray-400 max-w-2xl mx-auto">
+                  The principles that drive our innovation and commitment to
+                  excellence
+                </p>
+              </div>
+
+              <div className="grid md:grid-cols-3 gap-6">
+                {CoreValues.map((value, index) => (
+                  <motion.div
+                    key={value.title}
+                    initial={{ opacity: 0, y: 50 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: "-100px" }}
+                    className="relative overflow-hidden rounded-2xl border border-lime-400/20 bg-zinc-900/50 backdrop-blur-lg"
+                  >
+                    <div
+                      className={`absolute -inset-8 opacity-30 ${value.pattern}`}
+                    />
+                    <div className="relative p-8 space-y-6">
+                      <motion.div
+                        whileHover={{ rotate: 15, scale: 1.1 }}
+                        className="w-fit mx-auto"
+                      >
+                        {value.icon}
+                      </motion.div>
+                      <h3 className="text-2xl font-bold text-center bg-gradient-to-r from-lime-400 to-teal-300 bg-clip-text text-transparent">
+                        {value.title}
+                      </h3>
+                      <p className="text-gray-300 text-center">
+                        {value.description}
+                      </p>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </section>
+
+            {/* Timeline Section */}
+            <section className="space-y-12">
+              <div className="text-center space-y-4">
+                <div className="flex items-center justify-center space-x-4">
+                  <div className="relative">
+                    <div className="absolute h-5 w-5 animate-ping bg-teal-400 rounded-full" />
+                    <div className="h-5 w-5 bg-teal-600 rounded-full" />
+                  </div>
+                  <h2 className="text-4xl md:text-5xl font-bold text-white">
+                    Our Journey
+                  </h2>
+                </div>
+                <p className="text-lg text-gray-400 max-w-2xl mx-auto">
+                  Milestones that shaped our path to innovation and success
+                </p>
+              </div>
+              <TimelineSection />
+            </section>
+
+            {/* Stats Section */}
+            <section className="space-y-12">
+              <div className="text-center space-y-4">
+                <div className="flex items-center justify-center space-x-4">
+                  <div className="relative">
+                    <div className="absolute h-5 w-5 animate-ping bg-blue-400 rounded-full" />
+                    <div className="h-5 w-5 bg-blue-600 rounded-full" />
+                  </div>
+                  <h2 className="text-4xl md:text-5xl font-bold text-white">
+                    By The Numbers
+                  </h2>
+                </div>
+                <p className="text-lg text-gray-400 max-w-2xl mx-auto">
+                  Quantifying our impact and commitment to excellence
+                </p>
+              </div>
+
               <motion.div
-                key={stat.label}
+                className="grid grid-cols-2 md:grid-cols-4 gap-4"
+                initial="hidden"
+                whileInView="visible"
                 variants={{
-                  hidden: { scale: 0.8, opacity: 0 },
-                  visible: { scale: 1, opacity: 1 },
+                  hidden: { opacity: 0 },
+                  visible: {
+                    opacity: 1,
+                    transition: { staggerChildren: 0.2 },
+                  },
                 }}
-                className="p-6 rounded-xl border border-lime-400/20 bg-zinc-900/50 text-center"
               >
-                <div className="text-4xl font-bold bg-gradient-to-r from-lime-400 to-teal-300 bg-clip-text text-transparent mb-2">
-                  {stat.value}
-                </div>
-                <div className="text-gray-300 uppercase text-sm tracking-wider">
-                  {stat.label}
-                </div>
+                {[
+                  { value: "300%", label: "ROI Boost" },
+                  { value: "10x", label: "Efficiency Gain" },
+                  { value: "99.9%", label: "Uptime" },
+                  { value: "150+", label: "Happy Clients" },
+                ].map((stat, index) => (
+                  <motion.div
+                    key={stat.label}
+                    variants={{
+                      hidden: { scale: 0.8, opacity: 0 },
+                      visible: { scale: 1, opacity: 1 },
+                    }}
+                    className="p-6 rounded-xl border border-lime-400/20 bg-zinc-900/50 text-center"
+                  >
+                    <div className="text-4xl font-bold bg-gradient-to-r from-lime-400 to-teal-300 bg-clip-text text-transparent mb-2">
+                      {stat.value}
+                    </div>
+                    <div className="text-gray-300 uppercase text-sm tracking-wider">
+                      {stat.label}
+                    </div>
+                  </motion.div>
+                ))}
               </motion.div>
-            ))}
-          </motion.div>
+            </section>
 
-          {/* Floating Service Cards */}
-          <section className="grid md:grid-cols-2 gap-8">
-            <motion.div
-              className="relative overflow-hidden rounded-2xl border border-lime-400/20 bg-zinc-900/50 p-8"
-              whileHover={{ y: -10 }}
-              transition={{ type: "spring", stiffness: 300 }}
-            >
-              <div className="absolute -top-20 -right-20 w-40 h-40 bg-teal-400/10 rounded-full blur-xl" />
-              <Rocket className="w-12 h-12 text-lime-400 mb-6" />
-              <h3 className="text-2xl font-bold text-lime-400 mb-4">
-                Tech Acceleration
-              </h3>
-              <p className="text-gray-300 mb-6">
-                Next-gen solutions leveraging cutting-edge frameworks and cloud
-                infrastructure
-              </p>
-              <div className="flex flex-wrap gap-2">
-                {["AI Integration", "IoT Solutions", "Blockchain"].map(
-                  (tech) => (
-                    <span
-                      key={tech}
-                      className="px-3 py-1 rounded-full bg-lime-400/10 text-lime-400 text-sm"
-                    >
-                      {tech}
-                    </span>
-                  )
-                )}
+            {/* Services Section */}
+            <section className="space-y-12">
+              <div className="text-center space-y-4">
+                <div className="flex items-center justify-center space-x-4">
+                  <div className="relative">
+                    <div className="absolute h-5 w-5 animate-ping bg-purple-400 rounded-full" />
+                    <div className="h-5 w-5 bg-purple-600 rounded-full" />
+                  </div>
+                  <h2 className="text-4xl md:text-5xl font-bold text-white">
+                    Our Expertise
+                  </h2>
+                </div>
+                <p className="text-lg text-gray-400 max-w-2xl mx-auto">
+                  Combining technical prowess with strategic vision
+                </p>
               </div>
-            </motion.div>
 
-            <motion.div
-              className="relative overflow-hidden rounded-2xl border border-teal-400/20 bg-zinc-900/50 p-8"
-              whileHover={{ y: -10 }}
-              transition={{ type: "spring", stiffness: 300, delay: 0.1 }}
-            >
-              <div className="absolute -bottom-20 -left-20 w-40 h-40 bg-lime-400/10 rounded-full blur-xl" />
-              <CheckCircle className="w-12 h-12 text-teal-400 mb-6" />
-              <h3 className="text-2xl font-bold text-teal-400 mb-4">
-                Strategic Excellence
-              </h3>
-              <p className="text-gray-300 mb-6">
-                Data-driven decision making powered by real-time analytics and
-                market insights
-              </p>
-              <div className="flex flex-wrap gap-2">
-                {["BI Tools", "Market Analysis", "Risk Management"].map(
-                  (tech) => (
-                    <span
-                      key={tech}
-                      className="px-3 py-1 rounded-full bg-teal-400/10 text-teal-400 text-sm"
-                    >
-                      {tech}
-                    </span>
-                  )
-                )}
+              <div className="grid md:grid-cols-2 gap-8">
+                <motion.div
+                  className="relative overflow-hidden rounded-2xl border border-lime-400/20 bg-zinc-900/50 p-8"
+                  whileHover={{ y: -10 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                >
+                  <div className="absolute -top-20 -right-20 w-40 h-40 bg-teal-400/10 rounded-full blur-xl" />
+                  <Rocket className="w-12 h-12 text-lime-400 mb-6" />
+                  <h3 className="text-2xl font-bold text-lime-400 mb-4">
+                    Tech Acceleration
+                  </h3>
+                  <p className="text-gray-300 mb-6">
+                    Next-gen solutions leveraging cutting-edge frameworks and
+                    cloud infrastructure
+                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    {["AI Integration", "IoT Solutions", "Blockchain"].map(
+                      (tech) => (
+                        <span
+                          key={tech}
+                          className="px-3 py-1 rounded-full bg-lime-400/10 text-lime-400 text-sm"
+                        >
+                          {tech}
+                        </span>
+                      )
+                    )}
+                  </div>
+                </motion.div>
+
+                <motion.div
+                  className="relative overflow-hidden rounded-2xl border border-teal-400/20 bg-zinc-900/50 p-8"
+                  whileHover={{ y: -10 }}
+                  transition={{ type: "spring", stiffness: 300, delay: 0.1 }}
+                >
+                  <div className="absolute -bottom-20 -left-20 w-40 h-40 bg-lime-400/10 rounded-full blur-xl" />
+                  <CheckCircle className="w-12 h-12 text-teal-400 mb-6" />
+                  <h3 className="text-2xl font-bold text-teal-400 mb-4">
+                    Strategic Excellence
+                  </h3>
+                  <p className="text-gray-300 mb-6">
+                    Data-driven decision making powered by real-time analytics
+                    and market insights
+                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    {["BI Tools", "Market Analysis", "Risk Management"].map(
+                      (tech) => (
+                        <span
+                          key={tech}
+                          className="px-3 py-1 rounded-full bg-teal-400/10 text-teal-400 text-sm"
+                        >
+                          {tech}
+                        </span>
+                      )
+                    )}
+                  </div>
+                </motion.div>
               </div>
-            </motion.div>
-          </section>
+            </section>
+          </div>
         </div>
       </div>
     </div>

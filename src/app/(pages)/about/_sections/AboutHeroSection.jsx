@@ -47,7 +47,7 @@ const AboutHeroSection = () => {
   );
 
   return (
-    <div className=" top-0 z-10 min-h-screen  overflow-hidden">
+    <div className="sticky top-0 z-10 min-h-screen  overflow-hidden">
       <motion.div
         className="absolute flex justify-center items-center w-screen top-72"
         animate={{ rotate: 360 }}
@@ -74,7 +74,7 @@ const AboutHeroSection = () => {
         >
           <h1 className="text-4xl text-black font-normal leading-relaxed tracking-tight font-Manrope sm:text-5xl md:text-6xl">
             {renderWaveText("Exploring ", "text-black")}
-            <span className="font-semibold bg-gradient-to-r from-lime-400 via-teal-400 to-blue-500 bg-clip-text text-transparent">
+            <span className="font-semibold bg-gradient-to-r from-lime-500 via-teal-400 to-blue-500 bg-clip-text text-transparent">
               {renderWaveText("Our Story")}
             </span>
             <br className="hidden sm:block" />
@@ -89,7 +89,7 @@ const AboutHeroSection = () => {
             <br className="hidden sm:block" />
             {renderWaveText("with ")}
             <motion.span
-              className="border-2 border-lime-400 px-6 py-2 rounded-full bg-transparent inline-block shadow-md"
+              className="border-2 border-lime-400 px-6 py-2 rounded-full bg-white inline-block shadow-md"
               whileHover={{ scale: 1.02 }}
               transition={{ type: "spring", stiffness: 400 }}
             >

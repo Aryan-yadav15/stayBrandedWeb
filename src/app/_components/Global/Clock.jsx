@@ -18,9 +18,9 @@ function Clock() {
 
   // Split the text into two color groups
   const getLetterColor = (index) => {
-    if (index >= 1 && index <= 4) return "text-lime-400" // "STAY"
+    if (index >= 1 && index <= 4) return "text-red-400" // "STAY"
     if (index >= 5 && index <= 11) return "text-teal-400" // "BRANDED"
-    return "text-yellow-400" // The dash
+    return "text-lime-400" // The dash
   }
 
   return (

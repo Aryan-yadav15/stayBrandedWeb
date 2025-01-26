@@ -1,29 +1,41 @@
-import { Square } from "lucide-react"
+import { Square } from "lucide-react";
 
 export default function AppDevSEO() {
   return (
     <div className="min-h-screen bg-black text-white py-20 px-4 md:px-14">
       {/* App Development Section */}
       <section className="max-w-7xl mx-auto mb-32">
-        <div className="text-center mb-8">
-          <h2 className="text-4xl md:text-6xl font-bold mb-4">
-            Innovative{" "}
-            <span className="bg-gradient-to-r from-yellow-400 to-yellow-200 text-transparent bg-clip-text">
-              App Development
-            </span>{" "}
-            Solutions
-          </h2>
-          <p className="text-gray-400 max-w-3xl mx-auto">
-            Transform your ideas into powerful mobile applications. We specialize in creating user-friendly and
-            feature-rich apps for both iOS and Android, helping your business reach its audience on the go.
-          </p>
+        <div className="space-y-4">
+          <div className="flex items-center space-x-4">
+            <div className="relative">
+              <div className="absolute h-5 w-5 animate-ping bg-lime-400  rounded-full" />
+              <div className="h-5 w-5 bg-lime-500 rounded-full" />
+            </div>
+            <div className="flex items-center space-x-2">
+              <span className="text-sm text-lime-400 ">{"{04} —"}</span>
+              <span className="text-sm font-semibold uppercase tracking-wider text-lime-200">
+                Be on Mobile Phones
+              </span>
+            </div>
+          </div>
+          <div className="text-left mb-8">
+            <h2 className="text-4xl md:text-6xl font-bold mb-4">
+              Innovative{" "}
+              <span className="bg-gradient-to-r from-lime-400 to-teal-400 text-transparent bg-clip-text">
+                App Development
+              </span>{" "}
+              Solutions
+            </h2>
+          </div>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8 p-6 rounded-2xl bg-gradient-to-br from-gray-900 to-gray-800 border border-gray-800">
+        <div className="grid md:grid-cols-2 gap-8 p-6 rounded-2xl bg-gradient-to-br from-gray-900 to-gray-800 border border-gray-800 mt-8">
           <div className="space-y-6">
             {features.map((feature) => (
               <div key={feature.title} className="space-y-2">
-                <h3 className="text-xl font-bold text-yellow-400">{feature.title}</h3>
+                <h3 className="text-xl font-bold text-lime-400">
+                  {feature.title}
+                </h3>
                 <p className="text-gray-400">{feature.description}</p>
               </div>
             ))}
@@ -31,7 +43,9 @@ export default function AppDevSEO() {
           <div className="space-y-6">
             {solutions.map((solution) => (
               <div key={solution.title} className="space-y-2">
-                <h3 className="text-xl font-bold text-yellow-400">{solution.title}</h3>
+                <h3 className="text-xl font-bold text-lime-400">
+                  {solution.title}
+                </h3>
                 <p className="text-gray-400">{solution.description}</p>
               </div>
             ))}
@@ -41,27 +55,37 @@ export default function AppDevSEO() {
 
       {/* SEO Section */}
       <section className="max-w-7xl mx-auto">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-6xl font-bold mb-4">
-            Boost Your{" "}
-            <span className="bg-gradient-to-r from-yellow-400 to-yellow-200 text-transparent bg-clip-text">
-              Ranking
-            </span>{" "}
-            With SEO
-          </h2>
-          <p className="text-gray-400 max-w-3xl mx-auto">
-            Drive organic traffic and improve your visibility with our expert SEO services. From on-page optimization to
-            comprehensive keyword strategies, we ensure your business ranks high in search results.
-          </p>
+        <div className="space-y-4">
+          <div className="flex items-center space-x-4">
+            <div className="relative">
+              <div className="absolute h-5 w-5 animate-ping bg-lime-400  rounded-full" />
+              <div className="h-5 w-5 bg-lime-500 rounded-full" />
+            </div>
+            <div className="flex items-center space-x-2">
+              <span className="text-sm text-lime-400 ">{"{03} —"}</span>
+              <span className="text-sm font-semibold uppercase tracking-wider text-lime-200">
+                Worldwide solutions
+              </span>
+            </div>
+          </div>
+          <div className=" mb-12">
+            <h2 className="text-4xl md:text-6xl font-bold mb-4">
+              Boost Your{" "}
+              <span className="bg-gradient-to-r from-lime-400 to-teal-400 text-transparent bg-clip-text">
+                Ranking
+              </span>{" "}
+              With SEO
+            </h2>
+          </div>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
           {seoServices.map((service) => (
             <div
               key={service.title}
               className="p-6 rounded-xl bg-gradient-to-br from-gray-900 to-gray-800 border border-gray-800 hover:border-yellow-500/50 transition-colors"
             >
-              <div className="w-12 h-12 bg-yellow-400 rounded flex items-center justify-center mb-4">
+              <div className="w-12 h-12 bg-gradient-to-r from-lime-400 to-teal-400 rounded flex items-center justify-center mb-4">
                 <Square className="w-6 h-6 text-black" />
               </div>
               <h3 className="text-xl font-bold mb-2">{service.title}</h3>
@@ -71,7 +95,7 @@ export default function AppDevSEO() {
         </div>
       </section>
     </div>
-  )
+  );
 }
 
 const features = [
@@ -82,17 +106,20 @@ const features = [
   },
   {
     title: "User Experience Design",
-    description: "Craft intuitive and engaging interfaces that delight your users and maximize retention.",
+    description:
+      "Craft intuitive and engaging interfaces that delight your users and maximize retention.",
   },
   {
     title: "Scalable Backend",
-    description: "Build robust server infrastructure that grows with your user base and maintains performance.",
+    description:
+      "Build robust server infrastructure that grows with your user base and maintains performance.",
   },
   {
     title: "Real-Time Features",
-    description: "Implement live updates, chat, and notifications to keep users engaged and informed.",
+    description:
+      "Implement live updates, chat, and notifications to keep users engaged and informed.",
   },
-]
+];
 
 const solutions = [
   {
@@ -110,7 +137,7 @@ const solutions = [
     description:
       "Our apps are designed to adapt to evolving technologies, ensuring your business stays competitive and relevant. With modular architecture, integrating new features or scaling your app becomes effortless.",
   },
-]
+];
 
 const seoServices = [
   {
@@ -120,20 +147,22 @@ const seoServices = [
   },
   {
     title: "On-Page SEO",
-    description: "Optimize titles, meta descriptions, headers, and images to make your website search-engine friendly.",
+    description:
+      "Optimize titles, meta descriptions, headers, and images to make your website search-engine friendly.",
   },
   {
     title: "Technical SEO",
-    description: "Resolve issues like broken links, slow loading times, and crawling errors to improve rankings.",
+    description:
+      "Resolve issues like broken links, slow loading times, and crawling errors to improve rankings.",
   },
   {
     title: "Content Strategy",
-    description: "Create high-quality, keyword-focused content that boosts your domain authority and drives traffic.",
+    description:
+      "Create high-quality, keyword-focused content that boosts your domain authority and drives traffic.",
   },
   {
     title: "Packaging Design",
     description:
       "Elevate your product presentation with thoughtful, attention-grabbing packaging that mirrors your brand's values.",
   },
-]
-
+];
