@@ -8,11 +8,11 @@ export default function AppDevSEO() {
         <div className="space-y-4">
           <div className="flex items-center space-x-4">
             <div className="relative">
-              <div className="absolute h-5 w-5 animate-ping bg-lime-400  rounded-full" />
+              <div className="absolute h-5 w-5 animate-ping bg-lime-400 rounded-full" />
               <div className="h-5 w-5 bg-lime-500 rounded-full" />
             </div>
             <div className="flex items-center space-x-2">
-              <span className="text-sm text-lime-400 ">{"{04} —"}</span>
+              <span className="text-sm text-lime-400">{"{04} —"}</span>
               <span className="text-sm font-semibold uppercase tracking-wider text-lime-200">
                 Be on Mobile Phones
               </span>
@@ -29,14 +29,14 @@ export default function AppDevSEO() {
           </div>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8 p-6 rounded-2xl bg-gradient-to-br from-gray-900 to-gray-800 border border-gray-800 mt-8">
+        <div className="grid md:grid-cols-2 gap-8 p-4 sm:p-6 rounded-2xl bg-gradient-to-br from-gray-900 to-gray-800 border border-gray-800 mt-8">
           <div className="space-y-6">
             {features.map((feature) => (
               <div key={feature.title} className="space-y-2">
                 <h3 className="text-xl font-bold text-lime-400">
                   {feature.title}
                 </h3>
-                <p className="text-gray-400">{feature.description}</p>
+                <p className="text-gray-400 line-clamp-3">{feature.description}</p>
               </div>
             ))}
           </div>
@@ -46,7 +46,7 @@ export default function AppDevSEO() {
                 <h3 className="text-xl font-bold text-lime-400">
                   {solution.title}
                 </h3>
-                <p className="text-gray-400">{solution.description}</p>
+                <p className="text-gray-400 line-clamp-3">{solution.description}</p>
               </div>
             ))}
           </div>
@@ -58,17 +58,17 @@ export default function AppDevSEO() {
         <div className="space-y-4">
           <div className="flex items-center space-x-4">
             <div className="relative">
-              <div className="absolute h-5 w-5 animate-ping bg-lime-400  rounded-full" />
+              <div className="absolute h-5 w-5 animate-ping bg-lime-400 rounded-full" />
               <div className="h-5 w-5 bg-lime-500 rounded-full" />
             </div>
             <div className="flex items-center space-x-2">
-              <span className="text-sm text-lime-400 ">{"{03} —"}</span>
+              <span className="text-sm text-lime-400">{"{03} —"}</span>
               <span className="text-sm font-semibold uppercase tracking-wider text-lime-200">
                 Worldwide solutions
               </span>
             </div>
           </div>
-          <div className=" mb-12">
+          <div className="mb-12">
             <h2 className="text-4xl md:text-6xl font-bold mb-4">
               Boost Your{" "}
               <span className="bg-gradient-to-r from-lime-400 to-teal-400 text-transparent bg-clip-text">
@@ -83,13 +83,13 @@ export default function AppDevSEO() {
           {seoServices.map((service) => (
             <div
               key={service.title}
-              className="p-6 rounded-xl bg-gradient-to-br from-gray-900 to-gray-800 border border-gray-800 hover:border-yellow-500/50 transition-colors"
+              className="p-4 sm:p-6 rounded-xl bg-gradient-to-br from-gray-900 to-gray-800 border border-gray-800 hover:border-lime-400/50 transition-colors"
             >
-              <div className="w-12 h-12 bg-gradient-to-r from-lime-400 to-teal-400 rounded flex items-center justify-center mb-4">
-                <Square className="w-6 h-6 text-black" />
+              <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-r from-lime-400 to-teal-400 rounded flex items-center justify-center mb-4">
+                <Square className="w-4 h-4 sm:w-6 sm:h-6 text-black" />
               </div>
               <h3 className="text-xl font-bold mb-2">{service.title}</h3>
-              <p className="text-gray-400">{service.description}</p>
+              <p className="text-gray-400 line-clamp-3">{service.description}</p>
             </div>
           ))}
         </div>

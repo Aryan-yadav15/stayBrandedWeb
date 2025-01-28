@@ -1,6 +1,14 @@
 "use client";
 
 import { motion } from "framer-motion";
+import {
+  LayoutIcon,
+  CodeIcon,
+  DatabaseIcon,
+  ShoppingCartIcon,
+  ZapIcon,
+  ServerIcon,
+} from "lucide-react";
 
 export default function MarketingSections() {
   return (
@@ -41,7 +49,7 @@ export default function MarketingSections() {
           {/* First Card */}
           <motion.div
             whileHover={{ scale: 1.02 }}
-            className="p-8 rounded-2xl bg-gradient-to-br from-gray-900 to-gray-800 border-2 border-lime-400/20 relative overflow-hidden"
+            className="p-4 sm:p-6 md:p-8 rounded-2xl bg-gradient-to-br from-gray-900 to-gray-800 border-2 border-lime-400/20 relative overflow-hidden"
           >
             <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-lime-400/10 to-transparent opacity-20" />
             <div className="grid md:grid-cols-2 gap-8 items-center relative">
@@ -63,18 +71,18 @@ export default function MarketingSections() {
                   </span>
                 </div>
               </div>
-              <div className="h-64 rounded-xl bg-gradient-to-br from-lime-500/30 via-teal-500/30 to-emerald-500/30 backdrop-blur-lg border border-lime-400/20" />
+              <div className="min-h-48 md:h-64 rounded-xl bg-gradient-to-br from-lime-500/30 via-teal-500/30 to-emerald-500/30 backdrop-blur-lg border border-lime-400/20" />
             </div>
           </motion.div>
 
           {/* Second Card */}
           <motion.div
             whileHover={{ scale: 1.02 }}
-            className="p-8 rounded-2xl bg-gradient-to-br from-gray-900 to-gray-800 border-2 border-teal-400/20 relative overflow-hidden"
+            className="p-4 sm:p-6 md:p-8 rounded-2xl bg-gradient-to-br from-gray-900 to-gray-800 border-2 border-teal-400/20 relative overflow-hidden"
           >
             <div className="absolute inset-0 bg-[linear-gradient(45deg,_var(--tw-gradient-stops))] from-teal-400/10 to-transparent opacity-20" />
             <div className="grid md:grid-cols-2 gap-8 items-center relative">
-              <div className="h-64 rounded-xl bg-gradient-to-br from-teal-500/30 via-emerald-500/30 to-lime-500/30 backdrop-blur-lg border border-teal-400/20 order-1 md:order-2" />
+              <div className="min-h-48 md:h-64 rounded-xl bg-gradient-to-br from-teal-500/30 via-emerald-500/30 to-lime-500/30 backdrop-blur-lg border border-teal-400/20 order-1 md:order-2" />
               <div className="space-y-4 order-2 md:order-1">
                 <h3 className="text-2xl font-bold bg-gradient-to-r from-teal-400 to-lime-300 bg-clip-text text-transparent">
                   Full Campaign Management
@@ -97,16 +105,17 @@ export default function MarketingSections() {
           </motion.div>
         </div>
       </section>
+
       {/* Web Development Section */}
       <section className="max-w-7xl mx-auto">
         <div className="space-y-4">
           <div className="flex items-center space-x-4">
             <div className="relative">
-              <div className="absolute h-5 w-5 animate-ping bg-lime-400  rounded-full" />
+              <div className="absolute h-5 w-5 animate-ping bg-lime-400 rounded-full" />
               <div className="h-5 w-5 bg-lime-500 rounded-full" />
             </div>
             <div className="flex items-center space-x-2">
-              <span className="text-sm text-lime-400 ">{"{03} —"}</span>
+              <span className="text-sm text-lime-400">{"{03} —"}</span>
               <span className="text-sm font-semibold uppercase tracking-wider text-lime-200">
                 Worldwide solutions
               </span>
@@ -132,13 +141,13 @@ export default function MarketingSections() {
             <motion.div
               key={service.title}
               whileHover={{ scale: 1.05 }}
-              className="p-6 rounded-xl bg-gradient-to-br from-gray-900 to-gray-800 border border-gray-800"
+              className="p-4 sm:p-6 rounded-xl bg-gradient-to-br from-gray-900 to-gray-800 border border-gray-800"
             >
-              <div className="w-12 h-12 mb-4 rounded bg-gradient-to-br from-lime-400 to-teal-400 flex items-center justify-center">
+              <div className="w-8 h-8 sm:w-12 sm:h-12 mb-4 rounded bg-gradient-to-br from-lime-400 to-teal-400 flex items-center justify-center">
                 {service.icon}
               </div>
               <h3 className="text-xl font-bold mb-2">{service.title}</h3>
-              <p className="text-gray-400">{service.description}</p>
+              <p className="text-gray-400 line-clamp-3">{service.description}</p>
             </motion.div>
           ))}
         </div>
@@ -152,46 +161,36 @@ const services = [
     title: "Responsive Websites",
     description:
       "Build responsive, mobile-first websites that adapt to any screen size, ensuring your content looks great everywhere.",
-    icon: <LayoutIcon className="w-6 h-6 text-black" />,
+    icon: <LayoutIcon className="w-4 h-4 sm:w-6 sm:h-6 text-black" />,
   },
   {
     title: "Custom Solutions",
     description:
       "Design and develop solutions tailored specifically to your business needs—no templates, just unique excellence.",
-    icon: <CodeIcon className="w-6 h-6 text-black" />,
+    icon: <CodeIcon className="w-4 h-4 sm:w-6 sm:h-6 text-black" />,
   },
   {
     title: "CMS Integration",
     description:
       "Seamlessly integrate content management systems that make updating your website effortless.",
-    icon: <DatabaseIcon className="w-6 h-6 text-black" />,
+    icon: <DatabaseIcon className="w-4 h-4 sm:w-6 sm:h-6 text-black" />,
   },
   {
     title: "E-Commerce Platforms",
     description:
       "Build powerful online stores with secure payments, inventory management, and customer analytics.",
-    icon: <ShoppingCartIcon className="w-6 h-6 text-black" />,
+    icon: <ShoppingCartIcon className="w-4 h-4 sm:w-6 sm:h-6 text-black" />,
   },
   {
     title: "Performance Optimization",
     description:
       "Optimize your website for lightning-fast loading speeds and exceptional user experience.",
-    icon: <ZapIcon className="w-6 h-6 text-black" />,
+    icon: <ZapIcon className="w-4 h-4 sm:w-6 sm:h-6 text-black" />,
   },
   {
     title: "API Development",
     description:
       "Create robust APIs that power your applications and integrate with third-party services.",
-    icon: <ServerIcon className="w-6 h-6 text-black" />,
+    icon: <ServerIcon className="w-4 h-4 sm:w-6 sm:h-6 text-black" />,
   },
 ];
-
-// Import icons from lucide-react
-import {
-  LayoutIcon,
-  CodeIcon,
-  DatabaseIcon,
-  ShoppingCartIcon,
-  ZapIcon,
-  ServerIcon,
-} from "lucide-react";

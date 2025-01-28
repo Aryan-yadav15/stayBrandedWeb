@@ -2,47 +2,47 @@
 import React, { useEffect, useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight, CheckCircle, Clock, AlertCircle } from "lucide-react";
-
 const workflowSteps = [
   {
     id: 1,
-    title: "Identify Tasks",
-    description: "Workflows to identify tasks AI can automate and optimize.",
+    title: "Identify Opportunities",
+    description:
+      "Analyze workflows to identify opportunities where AI can create impact.",
     content: {
-      type: "bug-list",
+      type: "analysis",
       items: [
-        { id: 1, title: "Voice Assistant Bugs", status: "Operational" },
-        { id: 2, title: "Speech Recognition", status: "Operational" },
-        { id: 3, title: "Natural Language Processing", status: "Operational" },
-        { id: 4, title: "Intent Classification", status: "Operational" },
-        { id: 5, title: "Response Generation", status: "Operational" },
+        { id: 1, title: "Customer Service Requests", status: "Operational" },
+        { id: 2, title: "Data Pattern Recognition", status: "Operational" },
+        { id: 3, title: "Anomaly Detection", status: "Operational" },
+        { id: 4, title: "Predictive Maintenance", status: "Operational" },
+        { id: 5, title: "Workflow Automation", status: "Operational" },
       ],
     },
   },
   {
     id: 2,
-    title: "Develop & Integrate",
+    title: "Implement Solutions",
     description:
-      "Next, we develop and integrate AI solutions into your workflows.",
+      "Design, implement, and test AI-driven solutions tailored to your needs.",
     content: {
-      type: "integration",
+      type: "implementation",
       items: [
-        { id: 1, title: "AI Model Integration", status: "In Progress" },
-        { id: 2, title: "System Architecture", status: "Pending" },
-        { id: 3, title: "API Development", status: "Complete" },
+        { id: 1, title: "Custom Model Development", status: "In Progress" },
+        { id: 2, title: "Data Pipeline Integration", status: "Pending" },
+        { id: 3, title: "Workflow Deployment", status: "Complete" },
       ],
     },
   },
   {
     id: 3,
-    title: "Refine & Improve",
-    description: "Then, we continuously refine and improve your AI solutions.",
+    title: "Monitor & Optimize",
+    description: "Track performance and fine-tune AI solutions for efficiency.",
     content: {
-      type: "improvements",
+      type: "optimization",
       items: [
-        { id: 1, title: "Performance Metrics", status: "Active" },
-        { id: 2, title: "Model Optimization", status: "Scheduled" },
-        { id: 3, title: "Error Analysis", status: "Ongoing" },
+        { id: 1, title: "Model Retraining", status: "Active" },
+        { id: 2, title: "Performance Monitoring", status: "Scheduled" },
+        { id: 3, title: "Feedback Integration", status: "Ongoing" },
       ],
     },
   },
