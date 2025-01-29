@@ -92,7 +92,7 @@ export default function ContactForm() {
                   </div>
                 </div>
                 <div>
-                  <h3 className="font-bold text-2xl">Andrew Hughes</h3>
+                  <h3 className="font-bold text-2xl">Stay Branded</h3>
                   <p className="text-sm text-gray-600 mt-1">
                     Project Coordinator
                   </p>
