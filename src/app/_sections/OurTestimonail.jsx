@@ -4,7 +4,7 @@ import TestimonialSection from "../_components/ui/testimonials";
 const OurTestimonail = () => {
   return (
     <div className="overflow-hidden">
-      <div className="bg-black/90 p-36">
+      <div className="bg-black/90 p-4">
         <div className="flex items-center space-x-4">
           <div className="relative flex items-center mr-2">
             <div className="absolute h-4 w-4 rounded-full animate-ping bg-red-500"></div>

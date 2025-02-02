@@ -18,57 +18,62 @@ const PricingCards = () => {
     hidden: { opacity: 0, y: 20 },
     show: { opacity: 1, y: 0 },
   };
-
   const plans = [
     {
-      name: "Starter",
+      name: "Brand Starter",
       price: "499",
-      description: "Perfect for small businesses starting their AI journey",
+      description: "Building a strong foundational brand presence.",
       icon: <Zap className="w-6 h-6" />,
       features: [
-        "1 AI Project",
-        "Basic automation workflows",
-        "Email support",
-        "5 Team members",
-        "2GB storage",
-        "Basic analytics",
+        "Logo design (2 concepts, 2 revisions)",
+        "Brand color palette definition",
+        "Typography guidelines",
+        "Basic brand style guide",
+        "Google My Business Optimization",
+        "Profile setup/optimization on 2 platforms",
+        "Content planning template",
       ],
       popular: false,
     },
     {
-      name: "Professional",
+      name: "Growth Catalyst",
       price: "999",
-      description: "Ideal for growing businesses requiring more AI power",
+      description: "Expanding brand reach and driving targeted traffic.",
       icon: <Star className="w-6 h-6" />,
       features: [
-        "5 AI Projects",
-        "Advanced automations",
-        "Priority support",
-        "15 Team members",
-        "20GB storage",
-        "Advanced analytics",
+        "Brand voice and messaging guidelines",
+        "Expanded brand style guide",
+        "Mockups (e.g., business cards, letterhead)",
+        "SEO Foundation (Keyword research, On-page optimization)",
+        "Social Media Marketing (2 Platforms)",
+        "Content calendar creation",
+        "Responsive website design (up to 5 pages)",
+        "Google My Business Management",
       ],
       popular: true,
     },
     {
-      name: "Enterprise",
+      name: "Brand Dominator",
       price: "Custom",
-      description: "For large organizations with custom AI needs",
+      description: "Maximizing brand impact and driving significant business growth.",
       icon: <Shield className="w-6 h-6" />,
       features: [
-        "Unlimited AI Projects",
-        "Custom automations",
-        "24/7 Support",
-        "Unlimited members",
-        "Unlimited storage",
-        "Custom analytics",
+        "Full brand guidelines",
+        "Brand asset library",
+        "Brand book",
+        "Full-Service SEO (Technical audit, Content strategy)",
+        "Social Media Marketing (3 Platforms)",
+        "Paid social media advertising",
+        "Custom website design with E-commerce integration",
+        "Basic mobile app development (iOS and Android)",
+        "Retargeting campaigns",
+        "Advanced analytics and reporting",
       ],
       popular: false,
     },
   ];
-
   return (
-    <div className="bg-black/90 min-h-screen p-8 sticky bottom-0-0 px-36">
+    <div className="bg-black/90 min-h-screen p-4 md:p-8 lg:px-36">
       <div className="flex items-center space-x-4">
         <div className="relative flex items-center mr-2">
           <div className="absolute h-4 w-4 rounded-full animate-ping bg-red-500"></div>
@@ -79,13 +84,13 @@ const PricingCards = () => {
           <span className="text-sm font-bold text-white">Plans we provide</span>
         </div>
       </div>
-      <div className="flex mt-4 mb-4">
-        <p className="text-6xl text-left text-white w-[1000px] font-semibold">
+      <div className="mt-4 mb-4">
+        <p className="text-4xl md:text-5xl lg:text-6xl text-left text-white font-semibold">
           Three <span className="text-lime-400">Flexible plans{" "}</span> designed to fit your needs.
         </p>
       </div>
-      <div className="flex mb-20">
-        <p className="text-md text-left text-lime-300 w-[1000px]">
+      <div className="mb-8 md:mb-20">
+        <p className="text-md text-left text-lime-300">
           Choose the plan that best suits your business requirements and start
           leveraging the power of AI today.
         </p>
@@ -94,13 +99,13 @@ const PricingCards = () => {
         variants={container}
         initial="hidden"
         animate="show"
-        className="max-w-7xl sticky top-0 mx-auto grid md:grid-cols-3 gap-8"
+        className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
       >
         {plans.map((plan, index) => (
           <motion.div
             key={plan.name}
             variants={item}
-            className={`relative rounded-2xl p-8 ${
+            className={`relative rounded-2xl p-6 ${
               plan.popular
                 ? "bg-gradient-to-b from-emerald-500 to-emerald-700 border-2 border-emerald-400"
                 : "bg-gray-800 border-2 border-gray-700"

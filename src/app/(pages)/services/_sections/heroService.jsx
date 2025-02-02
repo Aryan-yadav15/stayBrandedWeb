@@ -47,7 +47,7 @@ const ServiceHeroSection = () => {
   );
 
   return (
-    <div className="sticky top-0 z-10 min-h-screen  overflow-hidden">
+    <div className="sticky top-0 z-10 min-h-screen overflow-hidden">
       <motion.div
         className="absolute flex justify-center items-center w-screen top-72"
         animate={{ rotate: 360 }}
@@ -73,27 +73,27 @@ const ServiceHeroSection = () => {
           transition={{ duration: 0.8 }}
         >
           <h1 className="text-4xl text-black font-normal leading-relaxed tracking-tight font-Manrope sm:text-5xl md:text-6xl">
-            {renderWaveText("Exploring ", "text-black")}
-            <span className="font-semibold bg-gradient-to-r from-lime-400 via-teal-400 to-blue-500 bg-clip-text text-transparent">
-              {renderWaveText("Our Story")}
+            {renderWaveText("Discover ", "text-black")}
+            <span className="font-semibold bg-gradient-to-r from-lime-600 via-teal-400 to-blue-500 bg-clip-text text-transparent">
+              {renderWaveText("Our Services")}
             </span>
             <br className="hidden sm:block" />
-            {renderWaveText("Crafting ")}
+            {renderWaveText("Crafting Solutions")}
             <motion.span
               className="bg-lime-400 text-black px-6 py-2 rounded-full inline-block shadow-lg"
               whileHover={{ scale: 1.02 }}
               transition={{ type: "spring", stiffness: 400 }}
             >
-              {renderWaveText("Digital Experiences")}
+              {renderWaveText("for Your Success")}
             </motion.span>
             <br className="hidden sm:block" />
             {renderWaveText("with ")}
             <motion.span
-              className="border-2 border-lime-400 px-6 py-2 rounded-full bg-transparent inline-block shadow-md"
+              className="border-2 border-lime-400 px-6 py-2 rounded-full bg-white inline-block shadow-md"
               whileHover={{ scale: 1.02 }}
               transition={{ type: "spring", stiffness: 400 }}
             >
-              {renderWaveText("Passion")}
+              {renderWaveText("Innovation")}
             </motion.span>
           </h1>
 
@@ -103,9 +103,7 @@ const ServiceHeroSection = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5 }}
           >
-            We transform complex challenges into elegant solutions, blending
-            creativity, technology, and strategic thinking to drive meaningful
-            digital transformation.
+            We provide tailored solutions that drive growth and efficiency, leveraging cutting-edge technology and strategic insights to empower your business.
           </motion.p>
 
           <motion.button
@@ -113,7 +111,7 @@ const ServiceHeroSection = () => {
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
           >
-            Learn More
+            Explore Our Services
             <motion.svg
               className="h-5 w-5"
               viewBox="0 0 24 24"

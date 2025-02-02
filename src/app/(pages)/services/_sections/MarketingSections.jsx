@@ -53,6 +53,7 @@ export default function MarketingSections() {
           >
             <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-lime-400/10 to-transparent opacity-20" />
             <div className="grid md:grid-cols-2 gap-8 items-center relative">
+              {/* Text Section */}
               <div className="space-y-4">
                 <h3 className="text-2xl font-bold bg-gradient-to-r from-lime-400 to-teal-300 bg-clip-text text-transparent">
                   Influencer Research & Campaign Strategy
@@ -71,7 +72,14 @@ export default function MarketingSections() {
                   </span>
                 </div>
               </div>
-              <div className="min-h-48 md:h-64 rounded-xl bg-gradient-to-br from-lime-500/30 via-teal-500/30 to-emerald-500/30 backdrop-blur-lg border border-lime-400/20" />
+              {/* Image Section */}
+              <div className="min-h-48 md:h-64 rounded-xl bg-gradient-to-br from-lime-500/30 via-teal-500/30 to-emerald-500/30 backdrop-blur-lg border border-lime-400/20">
+                <img
+                  src="https://images.unsplash.com/photo-1573164574572-cb89e39749b4?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+                  alt="Data analytics dashboard"
+                  className="w-full h-full object-cover rounded-xl mix-blend-luminosity"
+                />
+              </div>
             </div>
           </motion.div>
 
@@ -82,7 +90,15 @@ export default function MarketingSections() {
           >
             <div className="absolute inset-0 bg-[linear-gradient(45deg,_var(--tw-gradient-stops))] from-teal-400/10 to-transparent opacity-20" />
             <div className="grid md:grid-cols-2 gap-8 items-center relative">
-              <div className="min-h-48 md:h-64 rounded-xl bg-gradient-to-br from-teal-500/30 via-emerald-500/30 to-lime-500/30 backdrop-blur-lg border border-teal-400/20 order-1 md:order-2" />
+              {/* Image Section */}
+              <div className="min-h-48 md:h-64 rounded-xl bg-gradient-to-br from-teal-500/30 via-emerald-500/30 to-lime-500/30 backdrop-blur-lg border border-teal-400/20 order-1 md:order-2">
+                <img
+                  src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
+                  alt="Team collaborating on digital strategy"
+                  className="w-full h-full object-cover rounded-xl mix-blend-luminosity"
+                />
+              </div>
+              {/* Text Section */}
               <div className="space-y-4 order-2 md:order-1">
                 <h3 className="text-2xl font-bold bg-gradient-to-r from-teal-400 to-lime-300 bg-clip-text text-transparent">
                   Full Campaign Management
@@ -107,7 +123,7 @@ export default function MarketingSections() {
       </section>
 
       {/* Web Development Section */}
-      <section className="max-w-7xl mx-auto">
+      <section className="max-w-7xl mx-auto px-3">
         <div className="space-y-4">
           <div className="flex items-center space-x-4">
             <div className="relative">
@@ -147,7 +163,9 @@ export default function MarketingSections() {
                 {service.icon}
               </div>
               <h3 className="text-xl font-bold mb-2">{service.title}</h3>
-              <p className="text-gray-400 line-clamp-3">{service.description}</p>
+              <p className="text-gray-400 line-clamp-3">
+                {service.description}
+              </p>
             </motion.div>
           ))}
         </div>

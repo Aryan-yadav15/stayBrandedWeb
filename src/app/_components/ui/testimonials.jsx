@@ -1,4 +1,3 @@
-"use client";
 import React from "react";
 import { motion, useAnimate } from "framer-motion";
 
@@ -7,39 +6,35 @@ const testimonials = [
     id: 1,
     name: "Sarah Vanne",
     role: "Director of Foundry",
-    content:
-      "Conversion's revolutionary approach transformed our marketing ROI by 300% in just 90 days! Their paid advertising mastery is simply unparalleled.",
+    content: "Conversion's revolutionary approach transformed our marketing ROI by 300% in just 90 days! Their paid advertising mastery is simply unparalleled.",
     avatar: "🟢",
   },
   {
     id: 2,
     name: "Chris Wright",
     role: "CEO of MindAwakened",
-    content:
-      "We achieved 10x customer acquisition costs efficiency. Conversion's team are true growth alchemists!",
+    content: "We achieved 10x customer acquisition costs efficiency. Conversion's team are true growth alchemists!",
     avatar: "🔵",
   },
   {
     id: 3,
     name: "Belinda Meyers",
     role: "CTO of Relay",
-    content:
-      "From sceptics to evangelists - Conversion doubled our ARR while cutting CAC by 40%. Pure magic!",
+    content: "From sceptics to evangelists - Conversion doubled our ARR while cutting CAC by 40%. Pure magic!",
     avatar: "🟣",
   },
   {
     id: 4,
     name: "Melissa Reid",
     role: "Founder of Tuesday",
-    content:
-      "Our conversion rates skyrocketed 150% month-over-month. These wizards redefined performance marketing!",
+    content: "Our conversion rates skyrocketed 150% month-over-month. These wizards redefined performance marketing!",
     avatar: "🟠",
   },
 ];
 
-const TestimonialCard = React.memo(({ testimonial }) => (
+const TestimonialCard = React.memo(({ testimonial, isMobile }) => (
   <motion.div
-    className="p-8 rounded-2xl bg-gradient-to-br from-gray-900/80 to-black backdrop-blur-xl border border-lime-400/20 shadow-2xl relative mx-4"
+    className="p-4 md:p-8 rounded-2xl bg-gradient-to-br from-gray-900/80 to-black backdrop-blur-xl border border-lime-400/20 shadow-2xl relative mx-2 md:mx-4"
     initial={{ opacity: 0.9, y: 10 }}
     whileHover={{
       opacity: 1,
@@ -49,7 +44,7 @@ const TestimonialCard = React.memo(({ testimonial }) => (
     }}
     transition={{ type: "spring", stiffness: 300 }}
     style={{
-      minWidth: "420px",
+      minWidth: isMobile ? "280px" : "420px",
       willChange: "transform",
     }}
   >
@@ -58,7 +53,7 @@ const TestimonialCard = React.memo(({ testimonial }) => (
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"
         fill="currentColor"
-        className="w-8 h-8"
+        className="w-6 h-6 md:w-8 md:h-8"
       >
         <path
           fillRule="evenodd"
@@ -67,28 +62,27 @@ const TestimonialCard = React.memo(({ testimonial }) => (
         />
       </svg>
     </div>
-    <p className="text-lg leading-relaxed text-lime-100/90 mb-6 font-medium italic">
+    <p className="text-base md:text-lg leading-relaxed text-lime-100/90 mb-4 md:mb-6 font-medium italic">
       &ldquo;{testimonial.content}&rdquo;
     </p>
-    <div className="flex items-center gap-4 border-t border-lime-400/10 pt-6">
-      <div className="w-12 h-12 rounded-full bg-lime-900/50 border border-lime-400/20 flex items-center justify-center text-xl">
+    <div className="flex items-center gap-3 md:gap-4 border-t border-lime-400/10 pt-4 md:pt-6">
+      <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-lime-900/50 border border-lime-400/20 flex items-center justify-center text-lg md:text-xl">
         {testimonial.avatar}
       </div>
       <div>
-        <h3 className="font-bold text-lime-300 text-lg">{testimonial.name}</h3>
-        <p className="text-sm text-lime-400/80">{testimonial.role}</p>
+        <h3 className="font-bold text-lime-300 text-base md:text-lg">{testimonial.name}</h3>
+        <p className="text-xs md:text-sm text-lime-400/80">{testimonial.role}</p>
       </div>
     </div>
   </motion.div>
 ));
 
-const CARD_WIDTH = 468;
-
-const InfiniteList = ({ items, direction = "left", speed = 40 }) => {
+const InfiniteList = ({ items, direction = "left", speed = 40, isMobile }) => {
   const [scope, animate] = useAnimate();
   const [mounted, setMounted] = React.useState(false);
 
   const loopItems = React.useMemo(() => [...items, ...items], [items]);
+  const cardWidth = isMobile ? 296 : 468; // Including margins
 
   React.useEffect(() => {
     if (!mounted) {
@@ -96,7 +90,7 @@ const InfiniteList = ({ items, direction = "left", speed = 40 }) => {
       return;
     }
 
-    const totalWidth = items.length * CARD_WIDTH;
+    const totalWidth = items.length * cardWidth;
     const startX = direction === "left" ? 0 : -totalWidth;
     const endX = direction === "left" ? -totalWidth : 0;
 
@@ -107,7 +101,7 @@ const InfiniteList = ({ items, direction = "left", speed = 40 }) => {
           x: [startX, endX],
         },
         {
-          duration: speed,
+          duration: isMobile ? speed * 0.7 : speed, // Slightly faster on mobile
           ease: "linear",
           repeat: Infinity,
         }
@@ -115,7 +109,7 @@ const InfiniteList = ({ items, direction = "left", speed = 40 }) => {
     };
 
     animation();
-  }, [mounted, items, direction, speed, animate, scope]);
+  }, [mounted, items, direction, speed, animate, scope, cardWidth, isMobile]);
 
   return (
     <div className="relative overflow-hidden h-full">
@@ -124,14 +118,17 @@ const InfiniteList = ({ items, direction = "left", speed = 40 }) => {
         className="flex"
         style={{
           willChange: "transform",
-          transform:
-            direction === "left"
-              ? "translateX(0)"
-              : `translateX(-${items.length * CARD_WIDTH}px)`,
+          transform: direction === "left" 
+            ? "translateX(0)" 
+            : `translateX(-${items.length * cardWidth}px)`,
         }}
       >
         {loopItems.map((item, idx) => (
-          <TestimonialCard key={`${item.id}-${idx}`} testimonial={item} />
+          <TestimonialCard 
+            key={`${item.id}-${idx}`} 
+            testimonial={item} 
+            isMobile={isMobile}
+          />
         ))}
       </motion.div>
     </div>
@@ -139,28 +136,41 @@ const InfiniteList = ({ items, direction = "left", speed = 40 }) => {
 };
 
 const TestimonialSection = () => {
+  const [isMobile, setIsMobile] = React.useState(false);
+
+  React.useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
   return (
-    <div className="relative overflow-hidden bg-gradient-to-br from-gray-900 via-lime-900/20 to-gray-950 py-4 px-4">
+    <div className="relative overflow-hidden bg-gradient-to-br from-gray-900 via-lime-900/20 to-gray-950 py-2 md:py-4 px-2 md:px-4">
       <div className="max-w-7xl mx-auto">
-        <div className="relative z-10 space-y-16">
-          <div className="h-[300px] transform translate-y-6">
+        <div className="relative z-10 space-y-8 md:space-y-16">
+          <div className="h-[250px] md:h-[300px] transform translate-y-4 md:translate-y-6">
             <InfiniteList
               items={testimonials.slice(0, 2)}
               direction="right"
               speed={35}
+              isMobile={isMobile}
             />
           </div>
-          <div className="h-[280px] transform -translate-y-6">
+          <div className="h-[220px] md:h-[280px] transform -translate-y-4 md:-translate-y-6">
             <InfiniteList
               items={testimonials.slice(2, 4)}
               direction="left"
               speed={38}
+              isMobile={isMobile}
             />
           </div>
         </div>
 
-        {/* Subtle grid pattern overlay */}
-        <div className="absolute inset-0 z-0 mask-linear-0.015 opacity-10 bg-[size:40px_40px] bg-grid-lime-400/20" />
+        <div className="absolute inset-0 z-0 mask-linear-0.015 opacity-10 bg-[size:20px_20px] md:bg-[size:40px_40px] bg-grid-lime-400/20" />
       </div>
     </div>
   );

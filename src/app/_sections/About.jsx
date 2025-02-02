@@ -59,7 +59,7 @@ const About = () => {
         </div>
 
         {/* Workflow Animation */}
-        <div className="relative pt-12">
+        <div className="relative pt-12 hidden lg:flex">
           <WorkflowAnimation />
         </div>
       </div>

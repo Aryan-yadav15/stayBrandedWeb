@@ -2,7 +2,7 @@ import { Square } from "lucide-react";
 
 export default function AppDevSEO() {
   return (
-    <div className="min-h-screen bg-black text-white py-20 px-4 md:px-14">
+    <div className="min-h-screen bg-black text-white py-20 px-8 md:px-14">
       {/* App Development Section */}
       <section className="max-w-7xl mx-auto mb-32">
         <div className="space-y-4">
