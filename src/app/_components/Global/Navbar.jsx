@@ -3,10 +3,12 @@ import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const pathname = usePathname(); // Get current route
 
   // Handle scroll effect
   useEffect(() => {
@@ -18,9 +20,9 @@ const Navbar = () => {
   }, []);
 
   const navLinks = [
-    { name: "HOME", href: "/", isActive: true },
-    { name: "ABOUT", href: "about" },
-    { name: "SERVICES", href: "services" },
+    { name: "HOME", href: "/" },
+    { name: "ABOUT", href: "/about" },
+    { name: "SERVICES", href: "/services" },
   ];
 
   return (
@@ -54,7 +56,7 @@ const Navbar = () => {
                   key={link.name}
                   href={link.href}
                   className={`px-4 py-1 rounded-full text-sm transition-colors ${
-                    link.isActive
+                    pathname === link.href
                       ? "text-green-400"
                       : "text-white hover:text-green-400"
                   }`}
@@ -124,7 +126,7 @@ const Navbar = () => {
                 key={link.name}
                 href={link.href}
                 className={`block px-4 py-2 rounded-lg ${
-                  link.isActive ? "text-green-400" : "text-white"
+                  pathname === link.href ? "text-green-400" : "text-white"
                 }`}
                 whileHover={{ backgroundColor: "rgba(255,255,255,0.1)" }}
               >

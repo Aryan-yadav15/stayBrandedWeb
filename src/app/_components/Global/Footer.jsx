@@ -49,9 +49,9 @@ export default function Footer() {
 
         {/* Talk with Us Button */}
         <div className="space-y-4 pt-4">
-          <button className="px-6 md:px-8 py-2 md:py-3 bg-white text-black rounded-full font-medium hover:bg-yellow-400 transition-colors text-sm md:text-base">
-            Talk with Us
-          </button>
+          <Link href="/contact">
+          <div className="px-6 md:px-8 py-2 md:py-3 bg-white text-black rounded-full font-medium hover:bg-yellow-400 transition-colors text-sm md:text-base">Talk with us</div>
+          </Link>
         </div>
       </div>
 

@@ -55,7 +55,8 @@ const PricingCards = () => {
     {
       name: "Brand Dominator",
       price: "Custom",
-      description: "Maximizing brand impact and driving significant business growth.",
+      description:
+        "Maximizing brand impact and driving significant business growth.",
       icon: <Shield className="w-6 h-6" />,
       features: [
         "Full brand guidelines",
@@ -86,7 +87,8 @@ const PricingCards = () => {
       </div>
       <div className="mt-4 mb-4">
         <p className="text-4xl md:text-5xl lg:text-6xl text-left text-white font-semibold">
-          Three <span className="text-lime-400">Flexible plans{" "}</span> designed to fit your needs.
+          Three <span className="text-lime-400">Flexible plans </span> designed
+          to fit your needs.
         </p>
       </div>
       <div className="mb-8 md:mb-20">
@@ -141,19 +143,6 @@ const PricingCards = () => {
               </div>
               <p className="text-gray-400 mt-2">{plan.description}</p>
             </div>
-
-            <motion.button
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              className={`w-full py-3 rounded-lg font-medium mb-6 ${
-                plan.popular
-                  ? "bg-white text-emerald-600 hover:bg-gray-100"
-                  : "bg-emerald-600 text-white hover:bg-emerald-700"
-              }`}
-            >
-              Get Started
-            </motion.button>
-
             <ul className="space-y-4">
               {plan.features.map((feature, i) => (
                 <motion.li
