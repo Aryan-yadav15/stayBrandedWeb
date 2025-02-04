@@ -47,7 +47,7 @@ export default function ContactForm() {
             </h2>
             <div className="mt-6">
               <button className="w-full bg-gray-900 text-white py-2 rounded hover:bg-gray-800">
-                andrew@cc.com
+                Connect@staybranded.in{" "}
               </button>
               <button className="w-full bg-gray-900 text-white py-2 rounded mt-3 hover:bg-gray-800">
                 Send Message
