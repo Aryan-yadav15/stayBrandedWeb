@@ -31,9 +31,41 @@ export default function ContactForm() {
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("Form submitted:", formData);
-  };
+    e.preventDefault()
+    setLoading(true)
+
+    emailjs
+      .send(
+        "YOUR_SERVICE_ID", // Replace with EmailJS service ID
+        "template_2oet9ms", 
+        {
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          message: formData.message,
+          interests: formData.interests.join(", "),
+        },
+        "kpup8R1pV1mNd22sh" 
+      )
+      .then(
+        (result) => {
+          console.log("Email sent:", result.text)
+          setSuccess(true)
+          setLoading(false)
+          setFormData({
+            name: "",
+            email: "",
+            phone: "",
+            message: "",
+            interests: [],
+          })
+        },
+        (error) => {
+          console.error("Error sending email:", error.text)
+          setLoading(false)
+        }
+      )
+  }
 
   return (
     <div className="flex items-center justify-center bg-gray-900  py-10">
@@ -47,10 +79,7 @@ export default function ContactForm() {
             </h2>
             <div className="mt-6">
               <button className="w-full bg-gray-900 text-white py-2 rounded hover:bg-gray-800">
-                Connect@staybranded.in{" "}
-              </button>
-              <button className="w-full bg-gray-900 text-white py-2 rounded mt-3 hover:bg-gray-800">
-                Send Message
+                connect@staybranded.in{" "}
               </button>
             </div>
           </div>
