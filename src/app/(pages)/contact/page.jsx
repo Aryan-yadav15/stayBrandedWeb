@@ -1,16 +1,18 @@
-"use client";
-import { useRef, useState } from "react";
-import emailjs from "@emailjs/browser";
+"use client"
+import { useRef, useState } from "react"
+import emailjs from "@emailjs/browser"
 
 export default function ContactForm() {
-  const form = useRef();
+  const form = useRef()
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     phone: "",
     message: "",
     interests: [],
-  });
+  })
+  const [loading, setLoading] = useState(false)
+  const [success, setSuccess] = useState(false)
 
   const services = [
     "UI/UX Design",
@@ -19,7 +21,7 @@ export default function ContactForm() {
     "Content Production",
     "Illustration",
     "Other",
-  ];
+  ]
 
   const handleInterestToggle = (service) => {
     setFormData((prev) => ({
@@ -27,8 +29,8 @@ export default function ContactForm() {
       interests: prev.interests.includes(service)
         ? prev.interests.filter((i) => i !== service)
         : [...prev.interests, service],
-    }));
-  };
+    }))
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -36,8 +38,8 @@ export default function ContactForm() {
 
     emailjs
       .send(
-        "YOUR_SERVICE_ID", // Replace with EmailJS service ID
-        "template_2oet9ms", 
+        "service_8gmngld", // Replace with EmailJS service ID
+        "template_2oet9ms",
         {
           name: formData.name,
           email: formData.email,
@@ -45,7 +47,7 @@ export default function ContactForm() {
           message: formData.message,
           interests: formData.interests.join(", "),
         },
-        "kpup8R1pV1mNd22sh" 
+        "kpup8R1pV1mNd22sh"
       )
       .then(
         (result) => {
@@ -68,7 +70,7 @@ export default function ContactForm() {
   }
 
   return (
-    <div className="flex items-center justify-center bg-gray-900  py-10">
+    <div className="flex items-center justify-center bg-gray-900 py-10">
       <div className="bg-gray-900 shadow-xl w-full max-w-6xl mx-4 md:mx-auto rounded-lg overflow-hidden">
         <div className="flex flex-col md:flex-row gap-8 p-6 md:p-12">
           {/* Left Section */}
@@ -79,7 +81,7 @@ export default function ContactForm() {
             </h2>
             <div className="mt-6">
               <button className="w-full bg-gray-900 text-white py-2 rounded hover:bg-gray-800">
-                connect@staybranded.in{" "}
+                connect@staybranded.in
               </button>
             </div>
           </div>
@@ -152,13 +154,17 @@ export default function ContactForm() {
               <button
                 type="submit"
                 className="w-full bg-[#CCFF00] text-gray-900 py-3 rounded mt-6 font-medium hover:bg-[#b3e600] transition-colors"
+                disabled={loading}
               >
-                Submit
+                {loading ? "Sending..." : "Submit"}
               </button>
             </form>
+            {success && (
+              <p className="text-green-500 mt-4">Your message has been sent successfully!</p>
+            )}
           </div>
         </div>
       </div>
     </div>
-  );
+  )
 }
