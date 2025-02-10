@@ -74,9 +74,7 @@ const ServiceHeroSection = () => {
         >
           <h1 className="text-4xl text-black font-normal leading-relaxed tracking-tight font-Manrope sm:text-5xl md:text-6xl">
             {renderWaveText("Discover ", "text-black")}
-            <span className="font-semibold bg-gradient-to-r from-lime-600 via-teal-400 to-blue-500 bg-clip-text text-transparent">
-              {renderWaveText("Our Services")}
-            </span>
+            {renderWaveText("Our Services ", "font-semibold bg-gradient-to-r from-lime-600 via-teal-400 to-blue-500 bg-clip-text text-transparent")}
             <br className="hidden sm:block" />
             {renderWaveText("Crafting Solutions")}
             <motion.span

@@ -74,9 +74,7 @@ const AboutHeroSection = () => {
         >
           <h1 className="text-4xl text-black font-normal leading-relaxed tracking-tight font-Manrope sm:text-5xl md:text-6xl">
             {renderWaveText("Exploring ", "text-black")}
-            <span className="font-semibold bg-gradient-to-r from-lime-500 via-teal-400 to-blue-500 bg-clip-text text-transparent">
-              {renderWaveText("Our Story")}
-            </span>
+            {renderWaveText("Our Story ", "font-semibold bg-gradient-to-r from-lime-500 via-teal-400 to-blue-500 bg-clip-text text-transparent")}
             <br className="hidden sm:block" />
             {renderWaveText("Crafting ")}
             <motion.span

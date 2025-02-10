@@ -89,9 +89,8 @@ const HeroSection = () => {
         >
           <h1 className="text-4xl font-normal leading-tight tracking-tight font-Manrope sm:text-5xl md:text-6xl">
             {renderWaveText("Welcome to ", "text-gray-900")}
-            <span className="font-semibold bg-gradient-to-r from-gray-900 via-gray-800 to-gray-700 bg-clip-text text-transparent">
-              {renderWaveText("Stay Branded")}
-            </span>
+            {renderWaveText("Stay Branded", "font-semibold bg-gradient-to-r from-lime-500 via-teal-400 to-blue-500 bg-clip-text text-transparent")}
+            
             <br className="hidden sm:block" />
             {renderWaveText("Empowering ")}
             <motion.span
